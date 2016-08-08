@@ -1,10 +1,10 @@
-from flask import Flask, template_rendered, render_template
+from flask import Flask
+from source import AppDelegate
 
 app = Flask(__name__)
 
-@app.route('/')
-def main():
-    return render_template('index.html')
+root = AppDelegate(app)
+root.register()
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
