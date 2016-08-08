@@ -1,4 +1,7 @@
 import os
 
-os.system('cd ~/flask_proj/webapp')
+os.chdir('../../webapp')
+print 'current path' + ' ' + os.getcwd()
+print '...........'
+print 'updating git'
 os.system('git pull')
