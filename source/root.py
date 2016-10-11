@@ -8,6 +8,16 @@ class AppDelegate():
         self.app = app
 
     def register(self):
+        """
+        blueprint
+        """
+        from inter import main
+        self.app.register_blueprint(main)
+
+        """
+        normal route
+        """
+
         @self.app.route('/')
         def main():
             return render_template('index.html')
