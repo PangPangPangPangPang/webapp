@@ -20,6 +20,11 @@ class AppDelegate():
 
         @self.app.route('/')
         def main():
-            return render_template('index.html')
+            return self.app.send_static_file('index.html')
+            # return render_template('index.html')
+
+        @self.app.route('/<path:path>')
+        def static_file(path):
+            return self.app.send_static_file(path)
 
 

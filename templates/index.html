@@ -1,590 +1,138 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>
-    
-  Max's Blog
-  
-
-  </title>
-  <meta name="author" content="">
-  <meta name="description" content="">
+	<meta charset="utf-8">
+	<title>  
+	  
+  	Max's Blog
+  	
+	</title>
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link href="../static/asset/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="atom.xml" rel="alternate" title="Max's Blog" type="application/atom+xml">
-  <script src="../static/asset/js/modernizr-2.0.js"></script>
-  <script src="../static/asset/js/jquery.min.js"></script>
-  <script src="../static/.DocumentRevisions-V100asset/highlightjs/highlight.pack.js"></script>
-  <link href="../static/asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script>hljs.initHighlightingOnLoad();</script>
 
-  <style type="text/css">
-  .cat-children-p{ padding: 6px 0px;}
-  .hljs{background: none;}
-  </style>
-  <script type="text/javascript">
-  var isAddSildbar = true;
-  </script>
-  <script src="..static/asset/js/octopress.js" type="text/javascript"></script>
+	<link href="atom.xml" rel="alternate" title="Max's Blog" type="application/atom+xml">
+
+	<link href="asset/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="asset/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<script src="asset/javascripts/jquery.min.js"></script>
+	<script src="asset/highlightjs/highlight.pack.js"></script>
+	<link href="asset/highlightjs/styles/solarized_dark.css" media="screen, projection" rel="stylesheet" type="text/css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+	<!--[if lt IE 9]><script src="asset/javascripts/html5.js"></script><![endif]-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'> -->
+	<style type="text/css">
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(asset/font/1TiHc9yag0wq3lDO9cw0voX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(asset/font/6TbRXKWJjpj6V2v_WyRbMX-_kf6ByYO6CLYdB4HQE-Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(asset/font/TttUCfJ272GBgSKaOaD7KoX0hVgzZQUfRDuZrPvH3D8.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+	</style>
+	
+	<style type="text/css">
+	.container .left-col{ opacity: 1;}
+	#pagenavi a{ font-size: 1.3em;}
+	#pagenavi .next:before{ top: 3px;}
+	#pagenavi .prev:before{ top: 3px;}
+	.container .mid-col .mid-col-container #content .archives .title{ font-size: 1.5em;}
+	.container .mid-col .mid-col-container #content article{ padding: 15px 0px;}
+	#header .subtitle {
+		line-height: 1.2em;
+		padding-top: 8px;
+	}
+	article pre{ background: none; border: none; padding: 0;}
+	article .entry-content{text-align: left;}
+	.share-comment{ padding: 25px 0px; clear: both;}
+	hr{ margin: 20px 0px;border: 0; border-top:solid 1px #ddd;}
+	</style>
+  
+
 </head>
-<script type="text/javascript">
-//链接新开窗口
-function addBlankTargetForLinks () {
-  $('a[href^="http"]').each(function(){
-      $(this).attr('target', '_blank');
-  });
-}
-$(document).ready(function(event) {
-  addBlankTargetForLinks();
-});
-</script>
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="index.html">Max's Blog</a></h1>
-  
-    <h2></h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="./index.html">Home</a></li>
-  <li><a href="../static/archives.html">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content"> 
-<div class="blog-index">
-
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="../static/14703158550743.html">title: 《征服C指针》阅读笔记</a></h1>
-			<p class="meta"><time datetime="2016-08-04T21:04:15+08:00" 
-			pubdate data-updated="true">2016/8/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>date: 2015-12-28 14:42:11</p>
-
-<h2 id="toc_0">tags: [C语言, 指针]</h2>
-
-<h4 id="toc_1">缘由</h4>
-
-<p>上个周末参加了SF的分享会，听了一位来自QQ浏览器的工程师关于iOS内存管理的分享。当初认为iOS上的内存管理不重要，也不会出多大的篓子，基本概念比如引用计数什么的明白原理就好。然而听分享的时候还是云里雾里大概只能听懂70%，回去之后反思了一下，大学时候的c学的就很烂，都是只是会用，如果想精进就必须要明白其中的原理，《征服C指针》这本书以前就听说过，很多同学推荐过，不过大概是大学期间确实玩心太重，不能耐下心来去看这种既不能提高绩点，又不能和当时实习挂钩的书（当年实习的大型机真是荒废了半年多的时光啊）。想那么多，不如现在就开始做，这篇读书笔记一是为了分享，也是为了督促自己。目测会有好几篇。那就开始吧！</p>
-
-<h3 id="toc_2">第一章 从基础开始</h3>
-
-<h4 id="toc_3">1.1 什么是C</h4>
-
-<p>这一节主要介绍了c的由来，我以前一直以为<strong>sizeof</strong>只是一个函数，没想到竟然是关键字。太菜了，惭愧惭愧。</p>
-
-<h4 id="toc_4">1.2 关于指针</h4>
-
-<p>不得不说，即使是基础介绍的一章，也涨了姿势。<br/>
-这里有指针<strong>a</strong></p>
-
-<ol>
-<li>如果<strong>a</strong>保存了其他变量的地址，可以说是<strong>a</strong>指向该地址。</li>
-<li>*<strong>a</strong>等同于<strong>a</strong>指向的变量。</li>
-</ol>
-
-<p>疑问：</p>
-
-<pre><code class="language-c">    int a = 5;
-    void *b = &amp;a;
-    b++;
-    printf(&quot;%p\n&quot;,&amp;a);
-    printf(&quot;%lu\n&quot;,sizeof(int));
-    printf(&quot;%p\n&quot;,(int *)b);
-</code></pre>
-
-<p>我运行上面代码的时候地址加1并没有加4？why？<br/>
-结论：因为我声明的无类型指针，系统不知道自加的时候要加多少。</p>
-
-<h4 id="toc_5">1.3 关于数组</h4>
-
-<ol>
-<li><strong>p[i]</strong>只是*<strong>(p + i)</strong>的简写。这个结论真是涨姿势了。<strong>[]</strong>只是一个语法糖而已。</li>
-<li>使用指针的效率并不会更高。</li>
-<li>对数组进行值传递的时候，将数组整体整理成结构体成员。</li>
-</ol>
-
-<h3 id="toc_6">第二章 C是怎么使用内存的</h3>
-
-<h4 id="toc_7">2.1 虚拟地址</h4>
-
-<p>要点：程序面对的都是虚拟地址空间（这些结论已经有一定了解了）</p>
-
-<h4 id="toc_8">2.2 内存的使用方法</h4>
-
-<ol>
-<li>全局变量：定义在函数外面的变量都为全局变量</li>
-<li><strong>static</strong>：除去声明为静态变量外，全局变量加上<strong>static</strong> 后限定作用域在源代码文件中。</li>
-<li>局部变量声明在函数中。
 
 
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+				<header id="header" class="inner">
+				 
+					
+					<h1><a href="index.html">Max's Blog</a></h1>
+					<p class="subtitle"></p>
+					<nav id="main-nav">
+						<ul class="main">
+						
+						  <li id=""><a target="self" href="index.html">Home</a></li>
+						
+						  <li id=""><a target="_self" href="archives.html">Archives</a></li>
+						
+						</ul>
+					</nav>
+
+					<nav id="sub-nav">
+						<div class="social">
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+								<a class="rss" href="atom.xml" title="RSS">RSS</a>
+							
+						</div>
+					</nav>
+				</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			<div class="mid-col-container"> <div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
 		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="../static/14703158550716.html">《征服C指针》阅读笔记 II</a></h1>
-			<p class="meta"><time datetime="2016-08-04T21:04:15+08:00" 
-			pubdate data-updated="true">2016/8/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>title: 《征服C指针》阅读笔记 II<br/>
-date: 2015-12-31 11:39:59</p>
-
-<h2 id="toc_0">tags: [C语言, 指针]</h2>
-
-<h3 id="toc_1">第三章 揭秘C的语法</h3>
-
-<h4 id="toc_2">3.1 解读C的声明</h4>
-
-<p>这张首先介绍的是如何读C中的声明，让你用英文的语法去理解声明，可能是岛国人民的英语比较烂，声明这里我感觉没那么多坑，容易晕的地方无非就是指针数组和数组指针，简而言之就是** * <strong>和</strong>变量名<strong>如果有小括号返回的就是指针，否则就是数组。这个问题归根结底就是</strong> * <strong>的优先级高，就拿</strong>int <em>p[10]</em><em>来说，</em>* * <strong>的优先级很高，跟int结合后就决定了返回的是</strong>int *<strong>而读到最后发现</strong>[]<strong>，自然而然就变成了</strong>返回int * 类型的数组<strong>，而如果</strong>int *<strong>加上小括号变成</strong>int (<em>p)[]</em><em>，首先返回的会是</em><em>int</em><em>,看到</em><em>[]</em><em>就知道返回的是</em><em>int数组</em><em>,最后</em><em>(</em>p)<strong>声明</strong>p**是指针，最终返回的是数组指针，这里个人感觉不要揣测Dennis Ritchie的想法，记住就好，熟而生巧。</p>
-
-<h4 id="toc_3">3.2 C的数据类型的模型</h4>
-
-<p>前半段介绍了一下数组指针的小细节。如下代码：<br/>
-<code>c<br/>
-    int arr[10];<br/>
-    int *p = &amp;arr;<br/>
-    printf(&quot;size ------- \n arr - %d\n &amp;arr - %d\n p - %d\n&quot;,sizeof(arr), sizeof(&amp;arr), sizeof(p));<br/>
-    printf(&quot;point ------- \n arr - %p\n &amp;arr - %p\n p - %p\n&quot;,arr, &amp;arr, p);<br/>
-</code></p>
-
-<p>输出结果为</p>
-
-<pre><code class="language-c">size ------- 
- arr - 40
- &amp;arr - 8
- p - 8
-point ------- 
- arr - 0x7fff5fbff830
- &amp;arr - 0x7fff5fbff830
- p - 0x7fff5fbff830
-</code></pre>
-
-<p>可以看到最大的差别就是p和[arr]的sizeof不同，影响的地方就是两种类型的指针作自增操作的时候数值不同，两者的运用场景各有不同。这里差别来自于<strong>p</strong>是**int *<strong>类型而arr是</strong>int [10]**类型的，编译器会根据不同的类型做自增操作。</p>
-
-<p><strong>C中不存在多维数组，只不过是数组的数组</strong></p>
-
-<p>3.2.6介绍了函数指针，总结起来：</p>
-
-<ol>
-<li>从函数类型不能派生出除了指针类型之外的其他任何类型。（原因在于函数类型的大小是不定的，但是函数指针的大小是确定的）</li>
-<li>从数组类型是不能派生出函数类型的。</li>
-</ol>
-
-<p>3.2.10不完全类型，总结起来：<br/>
-C有三种类型：</p>
-
-<ol>
-<li>对象类型（char、int、数组、指针、结构体）</li>
-<li>函数类型</li>
-<li>不完全类型，结构体标记的声明就是不完全类型(void 也为不完全类型)</li>
-</ol>
-
-<p>例子：typedef struct Woman_tag Woman;声明的时候并不知道Woman的大小。<br/>
-<strong>结构体中不能存在不完全类型，但是可以存在不完全类型的指针</strong></p>
-
-<h4 id="toc_4">3.3表达式</h4>
-
-<p>略</p>
-
-<h4 id="toc_5">3.4解读C的声明</h4>
-
-<p>3.4.1介绍了<strong>const</strong>修饰符，总结：<br/>
-跟以前的认识一样，<strong>const</strong>修饰它右面整体的类型</p>
-
-<p>3.5介绍了C声明函数的参数不可以有数组，只能传递数组指针，并且重要的是<strong>int a[]</strong>和<strong>int *a</strong>等价，但是个人推荐前一种方式，因为前一种更加直观。然后作者倾向于后一种，不解。</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="../static/14703158550685.html">title: iOS二维码扫描识别</a></h1>
-			<p class="meta"><time datetime="2016-08-04T21:04:15+08:00" 
-			pubdate data-updated="true">2016/8/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>date: 2015-12-23 12:35:36</p>
-
-<h2 id="toc_0">tags: [iOS,qrcode]</h2>
-
-<h3 id="toc_1">前言</h3>
-
-<p>二维码功能在app中很常用，在iOS7之前iOS的二维码功能通常用<strong>ZXing</strong>等框架完成。iOS7之后<strong>AVFoundation</strong>已经支持了原生的二维码扫描功能。这篇文章帮助大家在app中实现此功能，并且会详细的解释一下其中的过程。在开始编码之前，先介绍一下相关的概念。</p>
-
-<h3 id="toc_2">概念相关</h3>
-
-<h4 id="toc_3">AVCaptureSession</h4>
-
-<p>熟悉<strong>AVFoundation</strong>的同学都会知道<strong>AVCaptureSession</strong>是其中的核心类。<strong>AVCaptureSession</strong>协调了一个物理设备的输入（input）和输出（output）。</p>
-
-<h4 id="toc_4">AVCaptureInput</h4>
-
-<p>顾名思义，就是上文中<strong>AVCaptureSession</strong>协调的输入。不过<strong>AVCaptureInput</strong>是一个虚类不能直接实例化，可以使用其子类。<strong>AVCaptureInput</strong>有多个接口可以同时承载一种或多种媒体数据，比如可以同时承载音频数据流和视频数据流。本文章使用的输入是<strong>AVCaptureInput</strong>的子类<strong>AVCaptureDeviceInput</strong>。<strong>AVCaptureDeviceInput</strong>提供了利用<strong>AVCaptureDevice</strong>捕捉流媒体的功能，顾名思义，就是利用这个输入就可以捕捉到二维码并且识别。</p>
-
-<h4 id="toc_5">AVCaptureDevice</h4>
-
-<p>物理设备的一个抽象，具体到设备上比如摄像头，麦克风。</p>
-
-<h4 id="toc_6">AVCaptureOutput</h4>
-
-<p>跟<strong>AVCaptureInput</strong>相同也是抽象基类，比如说我们看到的视频，听到的音频都是通过它处理输出。<strong>AVCaptureInput</strong>可以持有一个或多个<strong>AVCaptureConnection</strong>实例。本文章使用的是其子类<strong>AVCaptureMetadataOutput</strong>，该类可以捕获从输出中获取的元数据（metadata）。</p>
-
-<h4 id="toc_7">AVCaptureConnection</h4>
-
-<p>本文中没有使用到，但是还是简单介绍一下概念。<strong>AVCaptureConnection</strong>可以将<strong>AVCaptureInputPort</strong>和<strong>AVCaptureOutput</strong>或者<strong>AVCaptureVideoPreviewLayer</strong>关联起来。本文不需要手动调用这些关联，当利用<strong>AVCaptureSession</strong>关联输入和输出的时候，这些关联就已经生成。</p>
-
-<h3 id="toc_8">开始</h3>
-
-<p>首先看一下接口文件</p>
-
-<pre><code class="language-objectivec">@protocol  QRCodeParserDelegate&lt;NSObject&gt;
-
-@required
-
-- (void)QRCodeParser:(AVMetadataMachineReadableCodeObject *)object;
-
-@end
-
-typedef NS_ENUM(NSInteger, QRCodeParserStatus) {
-    QRCodeParserStatusPrepare  = 1,
-    QRCodeParserStatusScanning = 2,
-    QRCodeParserStatusStop     = 3
-};
-
-@interface QRCodeParser : NSObject
-
-@property (nonatomic, assign)QRCodeParserStatus status;
-
-- (instancetype)initWithFrame:(CGRect)rect
-                  andDelegate:(UIViewController&lt;QRCodeParserDelegate&gt;*)delegate;
-- (void)stopReading;
-- (void)startReading;
-- (BOOL)initQRScanner;
-
-@end
-</code></pre>
-
-<ul>
-<li><strong>QRCodeParserDelegate</strong>作为识别出二维码的回调。</li>
-<li><strong>QRCodeParserStatus</strong>parser的状态机，本文没有使用到。</li>
-<li><strong>initWithFrame:andDelegate:</strong>为parser的初始化方法。</li>
-<li><strong>startReading</strong>开始扫描。</li>
-<li><strong>stopReading</strong>停止扫描。</li>
-<li><strong>initQRScanner</strong>初始化二维码扫描器</li>
-</ul>
-
-<p>以下是核心部分代码：</p>
-
-<pre><code class="language-objectivec">- (BOOL)initQRScanner{
-    NSError *error = nil;
-    
-    //1
-    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    //2
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice
-                                                                        error:&amp;error];
-    if (!input || error) {
-        NSLog(@&quot;%@&quot;, [error localizedDescription]);
-        return NO;
-    }
-    //3
-    _captureSession = [AVCaptureSession new];
-    [_captureSession addInput:input];
-    SafeRelease(input);
-    
-    //4
-    _captureMetadataOutput = [AVCaptureMetadataOutput new];
-    [_captureMetadataOutput setRectOfInterest:CGRectMake(0.25, 0.25, 0.5, 0.5)];
-    [_captureSession addOutput:_captureMetadataOutput];
-    
-    //5
-    dispatchQueue = dispatch_queue_create(&quot;QRQueue&quot;, NULL);
-    [_captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
-    [_captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
-    
-    //6
-    _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
-    [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [_videoPreviewLayer setFrame:_rect];
-    [_ownerVC.view.layer addSublayer:_videoPreviewLayer];
-    
-    //7
-    [_captureSession startRunning];
-    
-    return YES;
-    
-}
-</code></pre>
-
-<p>接下来一步步解释上述代码：</p>
-
-<ol>
-<li>初始化捕捉设备，并且该设备类型为视频设备<strong>AVMediaTypeVideo</strong></li>
-<li>利用<strong>captureDevice</strong>生成输入源<strong>AVCaptureDeviceInput</strong>，从而此输入源交给<strong>AVCaptureSession</strong>来协调处理。</li>
-<li>初始化<strong>_captureSession</strong>协调输入输出，并将输入源<strong>input</strong>赋值。</li>
-<li>生成输出源<strong>_captureMetadataOutput</strong>，并将它付给<strong>AVCaptureSession</strong>，<strong>rectOfInterest</strong>表示将输出源可识别的范围控制在一个方形中。</li>
-<li>注册一个线程，并在该线程中设置<strong>_captureMetadataOutput</strong>代理为<strong>self</strong>。</li>
-<li>初始化<strong>_videoPreviewLayer</strong>来承载<strong>input</strong>提供的画面，并将其加在目标视图上。</li>
-</ol>
-
-<p>接下来实现其<strong>startReading</strong>，<strong>stopReading</strong>方法：</p>
-
-<pre><code class="language-Objective-c">- (void)startReading{
-    [_captureSession startRunning];
-}
-
--(void)stopReading{
-    [_captureSession stopRunning];
-}
-</code></pre>
-
-<p>扫描二维码之后的回调：</p>
-
-<pre><code class="language-objectivec">- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
-    for (AVMetadataObject *object in metadataObjects) {
-        if ([[object type] isEqualToString:AVMetadataObjectTypeQRCode]
-            &amp;&amp; [object isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
-            [self stopReading];
-            if ([_ownerVC respondsToSelector:@selector(QRCodeParser:)]) {
-                [_ownerVC performSelector:@selector(QRCodeParser:)
-                                 onThread:[NSThread mainThread]
-                               withObject:object
-                            waitUntilDone:YES];
-            }
-        }
-    }
-}
-</code></pre>
-
-<p>需要注意的是该回调触发在后台线程，如果有处理UI相关的操作请在主线程。<br/>
-接下来是有关根据二维码图片读取内容和根据内容生成二维码的代码截取：</p>
-
-<pre><code class="language-objectivec">@implementation UIImage (QRCodeGenerator)
-
-- (NSString *)QRCodeParserToContent{
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
-                                              context:context
-                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
-    NSMutableString *result = [NSMutableString new];
-    CIImage *ciImage = [CIImage imageWithCGImage:self.CGImage];
-    NSArray *features = [detector featuresInImage:ciImage];
-    if ([features count] &gt; 0) {
-        for (CIQRCodeFeature *feature in features) {
-            [result appendString:feature.messageString];
-        }
-    }else{
-        result = nil;
-    }
-    return result;
-}
-
-+ (UIImage *)createQRForString:(NSString *)qrString
-                     imageSize:(CGSize)imageSize {
-    NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
-    CIFilter *qrFilter = [CIFilter filterWithName:@&quot;CIQRCodeGenerator&quot;];
-    [qrFilter setDefaults];
-    [qrFilter setValue:stringData forKey:@&quot;inputMessage&quot;];
-    [qrFilter setValue:@&quot;M&quot; forKey:@&quot;inputCorrectionLevel&quot;];
-    
-    CIImage *outPutCIImage = qrFilter.outputImage;
-
-    CGImageRef imageRef = [[CIContext contextWithOptions:nil] createCGImage:outPutCIImage
-                                                                   fromRect:outPutCIImage.extent];
-    CGSize size = CGSizeMake(outPutCIImage.extent.size.width,
-                             outPutCIImage.extent.size.height);
-    
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width * 10.0,
-                                                      size.height * 10.0),
-                                           NO,
-                                           1.0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
-    CGContextSetAllowsAntialiasing(context, YES);
-    CGAffineTransform trans = CGAffineTransformMakeTranslation(0.0, size.height * 10.0);
-    trans = CGAffineTransformScale(trans, 10.0, -10.0);
-    CGContextConcatCTM(context, trans);
-    CGContextDrawImage(context, CGRectMake(0, 0, size.width, size.height), imageRef);
-    
-    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return result;
-}
-@end
-</code></pre>
-
-<p>接下来解释一下上面的代码：<br/>
-<strong>QRCodeParserToContent</strong>方法中，首先创建一个用来渲染<strong>CIImage</strong>的上下文<strong>context</strong>，值得注意的是<strong>CIContext</strong>线程安全，<strong>CIFilter</strong>非安全。然后创建一个<strong>detector</strong>用来探测image中得元素，用来获取一个图片中的<strong>CIFeature</strong>数组，这里<strong>CIDetectorTypeQRCode</strong>表示<strong>detector</strong>需要探测的元素为二维码。接下来的代码简洁明了，获取图片中的<strong>CIFeature</strong>，并将其中的<strong>messageString</strong>拼接返回。<br/>
-<strong>这个方法最低支持到iOS8.0</strong></p>
-
-<p><strong>createQRForString:imageSize:</strong>方法中，利用的核心类是<strong>CIFilter</strong>，这个<strong>CIFilter</strong>可以看做是一个滤镜，核心的思路是交给<strong>filter</strong>一个输入，也就是原图片，然后配置<strong>filter</strong>的属性，最后获取的<strong>outputImage</strong>就是加完滤镜的图片。方法中的<strong>imageRef</strong>就是结果图片。最后利用<strong>CoreGraphics</strong>中的绘制图片的函数绘制出<strong>UIImage</strong>。</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="../static/14703158550637.html">---</a></h1>
-			<p class="meta"><time datetime="2016-08-04T21:04:15+08:00" 
-			pubdate data-updated="true">2016/8/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>title: FMDB阅读笔记（一）<br/>
-date: 2016-01-22 17:30:23</p>
-
-<h2 id="toc_0">tags:</h2>
-
-<h3 id="toc_1">FMDatabaseQueue</h3>
-
-<p>该类提供了多线程操作数据库的功能。尽量不要在多线程操作同一个<strong>FMDatabase</strong>实例。取而代之的是在每一个<strong>FMDatabaseQueue</strong>创建一个<strong>FMDatabase</strong>实例。下面来详细看代码吧。</p>
-
-<pre><code class="language-objectivec">- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags {
-    
-    self = [super init];
-    
-    if (self != nil) {
-        
-        _db = [[[self class] databaseClass] databaseWithPath:aPath];
-        FMDBRetain(_db);
-        
-#if SQLITE_VERSION_NUMBER &gt;= 3005000
-        BOOL success = [_db openWithFlags:openFlags];
-#else
-        BOOL success = [_db open];
-#endif
-        if (!success) {
-            NSLog(@&quot;Could not create database queue for path %@&quot;, aPath);
-            FMDBRelease(self);
-            return 0x00;
-        }
-        
-        _path = FMDBReturnRetained(aPath);
-        
-        _queue = dispatch_queue_create([[NSString stringWithFormat:@&quot;fmdb.%@&quot;, self] UTF8String], NULL);
-        dispatch_queue_set_specific(_queue, kDispatchQueueSpecificKey, (__bridge void *)self, NULL);
-        _openFlags = openFlags;
-    }
-    
-    return self;
-}
-</code></pre>
-
-<p>初始化方法，创建database实例，然后创建了一个串行队列，并用<strong>dispatch<u>queue</u>set_specific</strong>方法跟<strong>FMDatabaseQueue</strong>创建关联。<strong>openWithFlags:openFlags</strong>为开启文件的选项。默认<strong>open</strong>方法的选项为<strong>SQLITE<u>OPEN</u>READWRITE | SQLITE<u>OPEN</u>CREATE</strong>。</p>
-
-<pre><code class="language-objectivec">- (void)inDatabase:(void (^)(FMDatabase *db))block {
-    /* Get the currently executing queue (which should probably be nil, but in theory could be another DB queue
-     * and then check it against self to make sure we&#39;re not about to deadlock. */
-    FMDatabaseQueue *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueSpecificKey);
-    assert(currentSyncQueue != self &amp;&amp; &quot;inDatabase: was called reentrantly on the same queue, which would lead to a deadlock&quot;);
-    
-    FMDBRetain(self);
-    
-    dispatch_sync(_queue, ^() {
-        
-        FMDatabase *db = [self database];
-        block(db);
-        
-        if ([db hasOpenResultSets]) {
-            NSLog(@&quot;Warning: there is at least one open result set around after performing [FMDatabaseQueue inDatabase:]&quot;);
-            
-#if defined(DEBUG) &amp;&amp; DEBUG
-            NSSet *openSetCopy = FMDBReturnAutoreleased([[db valueForKey:@&quot;_openResultSets&quot;] copy]);
-            for (NSValue *rsInWrappedInATastyValueMeal in openSetCopy) {
-                FMResultSet *rs = (FMResultSet *)[rsInWrappedInATastyValueMeal pointerValue];
-                NSLog(@&quot;query: &#39;%@&#39;&quot;, [rs query]);
-            }
-#endif
-        }
-    });
-    
-    FMDBRelease(self);
-}
-</code></pre>
-
-<p>利用<strong>dispatch<u>get</u>specific</strong>获得<strong>FMDatabaseQueue</strong>关联的线程，如果是同一个线程，则直接断言，因为同线程执行<strong>dispatch_sync</strong>会造成死锁。这里的<strong>FMDBRetain(self)</strong>和<strong>FMDBRelease(self)</strong>应该是为了防止block内提前将self释放造成后续访问野指针。接下来在关联线程中获取database并执行block，这里如果在database中存在多个查询结果则防处警告，debug模式下会打印出这些查询结果的query。这里的copy操作不理解。</p>
-
-<pre><code class="language-objectivec">- (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block;
-- (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block;
-</code></pre>
-
-<p>这两个方法的内部逻辑很简单，判断事务开启<strong>defer transaction</strong> 或者<strong>exclusive transaction</strong>，关闭时根据业务逻辑<strong>rollback</strong>或者<strong>commit</strong>。这个类很简单，就分析到这里。</p>
-
-<h3 id="toc_2">FMDatabasePool</h3>
-
-<p>一开篇就强调不到万不得已不要用这个类，如果你只是用来读数据库，可以用这个类，否则可能造成死锁。</p>
-
-<pre><code class="language-objectivec">- (void)executeLocked:(void (^)(void))aBlock {
-    dispatch_sync(_lockQueue, aBlock);
-}
-</code></pre>
-
-<p>该类通过上述方法保证池子操作的线程安全（毕竟已经同步单线程跑了），但是该类并不能保证池内数据库操作安全，该死锁还是会死锁，同时读写会引发很大的问题。这个类没有什么太多值得说的地方，如果有大量并发读操作的需求的话推荐使用这个类，其他都不推荐。</p>
-
-<h3 id="toc_3">FMResultSet</h3>
-
-<p>query结果的类。通过<strong>FMStatement</strong>访问结果。这个类主要的功能算是提供了一套友好的OC接口来访问结果。</p>
-
-
-		</div>
-
-		
-
-	</article>
- 
-	<article>
-		 <header>
-		  	<h1 class="entry-title"><a href="../static/14703158550587.html">title: Auto Layout中的VFL使用教程（译）</a></h1>
-			<p class="meta"><time datetime="2016-08-04T21:04:15+08:00" 
-			pubdate data-updated="true">2016/8/4</time></p>
-		 </header>
-	  	<div class="entry-content">
-		  	
-		  	<p>date: 2015-12-11 14:12:37</p>
-
-<h2 id="toc_0">tags: [翻译,iOS,AutoLayout,VFL]</h2>
+		<h1 class="title" itemprop="name"><a href="14761901397909.html" itemprop="url">
+		Auto Layout中的VFL使用教程（译）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2015-12-11 14:12:37</h2>
 
 <p><a href="http://www.raywenderlich.com/110393/auto-layout-visual-format-language-tutorial">原文链接</a></p>
 
@@ -646,8 +194,8 @@ date: 2016-01-22 17:30:23</p>
 <li>另外在上图中还有两个特殊的字符，他们的意思是：
 
 <ul>
-<li><strong><q>?</q></strong>代表在格式化串中非必须。</li>
-<li><strong><q>*</q></strong>代表允许在格式化串中出现0次或多次。</li>
+<li><strong>&quot;?&quot;</strong>代表在格式化串中非必须。</li>
+<li><strong>&quot;*&quot;</strong>代表允许在格式化串中出现0次或多次。</li>
 </ul></li>
 </ol>
 
@@ -1088,74 +636,580 @@ Auto Layout可以进行串替换，将metrics字典中的value替换到格式化
 如果你对该教程或者Auto Layout有什么问题或者建议的话，请留言！</p>
 
 
+			
+			
 		</div>
 
-		
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14761901397970.html" itemprop="url">
+		FMDB阅读笔记（一）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2016-01-22 17:30:23</h2>
+
+<h2 id="toc_1">FMDatabaseQueue</h2>
+
+<p>该类提供了多线程操作数据库的功能。尽量不要在多线程操作同一个<strong>FMDatabase</strong>实例。取而代之的是在每一个<strong>FMDatabaseQueue</strong>创建一个<strong>FMDatabase</strong>实例。下面来详细看代码吧。</p>
+
+<pre><code class="language-objectivec">- (instancetype)initWithPath:(NSString*)aPath flags:(int)openFlags {
+    
+    self = [super init];
+    
+    if (self != nil) {
+        
+        _db = [[[self class] databaseClass] databaseWithPath:aPath];
+        FMDBRetain(_db);
+        
+#if SQLITE_VERSION_NUMBER &gt;= 3005000
+        BOOL success = [_db openWithFlags:openFlags];
+#else
+        BOOL success = [_db open];
+#endif
+        if (!success) {
+            NSLog(@&quot;Could not create database queue for path %@&quot;, aPath);
+            FMDBRelease(self);
+            return 0x00;
+        }
+        
+        _path = FMDBReturnRetained(aPath);
+        
+        _queue = dispatch_queue_create([[NSString stringWithFormat:@&quot;fmdb.%@&quot;, self] UTF8String], NULL);
+        dispatch_queue_set_specific(_queue, kDispatchQueueSpecificKey, (__bridge void *)self, NULL);
+        _openFlags = openFlags;
+    }
+    
+    return self;
+}
+</code></pre>
+
+<p>初始化方法，创建database实例，然后创建了一个串行队列，并用<strong>dispatch_queue_set_specific</strong>方法跟<strong>FMDatabaseQueue</strong>创建关联。<strong>openWithFlags:openFlags</strong>为开启文件的选项。默认<strong>open</strong>方法的选项为<strong>SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE</strong>。</p>
+
+<pre><code class="language-objectivec">- (void)inDatabase:(void (^)(FMDatabase *db))block {
+    /* Get the currently executing queue (which should probably be nil, but in theory could be another DB queue
+     * and then check it against self to make sure we&#39;re not about to deadlock. */
+    FMDatabaseQueue *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueSpecificKey);
+    assert(currentSyncQueue != self &amp;&amp; &quot;inDatabase: was called reentrantly on the same queue, which would lead to a deadlock&quot;);
+    
+    FMDBRetain(self);
+    
+    dispatch_sync(_queue, ^() {
+        
+        FMDatabase *db = [self database];
+        block(db);
+        
+        if ([db hasOpenResultSets]) {
+            NSLog(@&quot;Warning: there is at least one open result set around after performing [FMDatabaseQueue inDatabase:]&quot;);
+            
+#if defined(DEBUG) &amp;&amp; DEBUG
+            NSSet *openSetCopy = FMDBReturnAutoreleased([[db valueForKey:@&quot;_openResultSets&quot;] copy]);
+            for (NSValue *rsInWrappedInATastyValueMeal in openSetCopy) {
+                FMResultSet *rs = (FMResultSet *)[rsInWrappedInATastyValueMeal pointerValue];
+                NSLog(@&quot;query: &#39;%@&#39;&quot;, [rs query]);
+            }
+#endif
+        }
+    });
+    
+    FMDBRelease(self);
+}
+</code></pre>
+
+<p>利用<strong>dispatch_get_specific</strong>获得<strong>FMDatabaseQueue</strong>关联的线程，如果是同一个线程，则直接断言，因为同线程执行<strong>dispatch_sync</strong>会造成死锁。这里的<strong>FMDBRetain(self)</strong>和<strong>FMDBRelease(self)</strong>应该是为了防止block内提前将self释放造成后续访问野指针。接下来在关联线程中获取database并执行block，这里如果在database中存在多个查询结果则防处警告，debug模式下会打印出这些查询结果的query。这里的copy操作不理解。</p>
+
+<pre><code class="language-objectivec">- (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block;
+- (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block;
+</code></pre>
+
+<p>这两个方法的内部逻辑很简单，判断事务开启<strong>defer transaction</strong> 或者<strong>exclusive transaction</strong>，关闭时根据业务逻辑<strong>rollback</strong>或者<strong>commit</strong>。这个类很简单，就分析到这里。</p>
+
+<h3 id="toc_2">FMDatabasePool</h3>
+
+<p>一开篇就强调不到万不得已不要用这个类，如果你只是用来读数据库，可以用这个类，否则可能造成死锁。</p>
+
+<pre><code class="language-objectivec">- (void)executeLocked:(void (^)(void))aBlock {
+    dispatch_sync(_lockQueue, aBlock);
+}
+</code></pre>
+
+<p>该类通过上述方法保证池子操作的线程安全（毕竟已经同步单线程跑了），但是该类并不能保证池内数据库操作安全，该死锁还是会死锁，同时读写会引发很大的问题。这个类没有什么太多值得说的地方，如果有大量并发读操作的需求的话推荐使用这个类，其他都不推荐。</p>
+
+<h3 id="toc_3">FMResultSet</h3>
+
+<p>query结果的类。通过<strong>FMStatement</strong>访问结果。这个类主要的功能算是提供了一套友好的OC接口来访问结果。</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14761901398013.html" itemprop="url">
+		FMDB阅读笔记（二）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2016-01-26 19:36:11</h2>
+
+<h3 id="toc_1">FMDatabase</h3>
+
+<p><strong>FMDatabase</strong>作为核心类，封装了sqlite的大部分数据库操作。<br/>
+初始化方法没什么可说的，从**- (BOOL)openWithFlags:(int)flags vfs:(NSString *)vfsName;<br/>
+**说起。</p>
+
+<pre><code class="language-objectivec">- (BOOL)openWithFlags:(int)flags vfs:(NSString *)vfsName;
+</code></pre>
+
+<h4 id="toc_2">flags</h4>
+
+<p>三个必选项：<strong>SQLITE_OPEN_READONLY</strong>，<strong>SQLITE_OPEN_READWRITE</strong>，<strong>SQLITE_OPEN_CREATE</strong></p>
+
+<p><a href="http://www.sqlite.org/vfs.html">vfs</a></p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14761901398063.html" itemprop="url">
+		iOS二维码扫描识别</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2015-12-23 12:35:36</h2>
+
+<h3 id="toc_1">前言</h3>
+
+<p>二维码功能在app中很常用，在iOS7之前iOS的二维码功能通常用<strong>ZXing</strong>等框架完成。iOS7之后<strong>AVFoundation</strong>已经支持了原生的二维码扫描功能。这篇文章帮助大家在app中实现此功能，并且会详细的解释一下其中的过程。在开始编码之前，先介绍一下相关的概念。</p>
+
+<h3 id="toc_2">概念相关</h3>
+
+<h4 id="toc_3">AVCaptureSession</h4>
+
+<p>熟悉<strong>AVFoundation</strong>的同学都会知道<strong>AVCaptureSession</strong>是其中的核心类。<strong>AVCaptureSession</strong>协调了一个物理设备的输入（input）和输出（output）。</p>
+
+<h4 id="toc_4">AVCaptureInput</h4>
+
+<p>顾名思义，就是上文中<strong>AVCaptureSession</strong>协调的输入。不过<strong>AVCaptureInput</strong>是一个虚类不能直接实例化，可以使用其子类。<strong>AVCaptureInput</strong>有多个接口可以同时承载一种或多种媒体数据，比如可以同时承载音频数据流和视频数据流。本文章使用的输入是<strong>AVCaptureInput</strong>的子类<strong>AVCaptureDeviceInput</strong>。<strong>AVCaptureDeviceInput</strong>提供了利用<strong>AVCaptureDevice</strong>捕捉流媒体的功能，顾名思义，就是利用这个输入就可以捕捉到二维码并且识别。</p>
+
+<h4 id="toc_5">AVCaptureDevice</h4>
+
+<p>物理设备的一个抽象，具体到设备上比如摄像头，麦克风。</p>
+
+<h4 id="toc_6">AVCaptureOutput</h4>
+
+<p>跟<strong>AVCaptureInput</strong>相同也是抽象基类，比如说我们看到的视频，听到的音频都是通过它处理输出。<strong>AVCaptureInput</strong>可以持有一个或多个<strong>AVCaptureConnection</strong>实例。本文章使用的是其子类<strong>AVCaptureMetadataOutput</strong>，该类可以捕获从输出中获取的元数据（metadata）。</p>
+
+<h4 id="toc_7">AVCaptureConnection</h4>
+
+<p>本文中没有使用到，但是还是简单介绍一下概念。<strong>AVCaptureConnection</strong>可以将<strong>AVCaptureInputPort</strong>和<strong>AVCaptureOutput</strong>或者<strong>AVCaptureVideoPreviewLayer</strong>关联起来。本文不需要手动调用这些关联，当利用<strong>AVCaptureSession</strong>关联输入和输出的时候，这些关联就已经生成。</p>
+
+<h3 id="toc_8">开始</h3>
+
+<p>首先看一下接口文件</p>
+
+<pre><code class="language-objectivec">@protocol  QRCodeParserDelegate&lt;NSObject&gt;
+
+@required
+
+- (void)QRCodeParser:(AVMetadataMachineReadableCodeObject *)object;
+
+@end
+
+typedef NS_ENUM(NSInteger, QRCodeParserStatus) {
+    QRCodeParserStatusPrepare  = 1,
+    QRCodeParserStatusScanning = 2,
+    QRCodeParserStatusStop     = 3
+};
+
+@interface QRCodeParser : NSObject
+
+@property (nonatomic, assign)QRCodeParserStatus status;
+
+- (instancetype)initWithFrame:(CGRect)rect
+                  andDelegate:(UIViewController&lt;QRCodeParserDelegate&gt;*)delegate;
+- (void)stopReading;
+- (void)startReading;
+- (BOOL)initQRScanner;
+
+@end
+</code></pre>
+
+<ul>
+<li><strong>QRCodeParserDelegate</strong>作为识别出二维码的回调。</li>
+<li><strong>QRCodeParserStatus</strong>parser的状态机，本文没有使用到。</li>
+<li><strong>initWithFrame:andDelegate:</strong>为parser的初始化方法。</li>
+<li><strong>startReading</strong>开始扫描。</li>
+<li><strong>stopReading</strong>停止扫描。</li>
+<li><strong>initQRScanner</strong>初始化二维码扫描器</li>
+</ul>
+
+<p>以下是核心部分代码：</p>
+
+<pre><code class="language-objectivec">- (BOOL)initQRScanner{
+    NSError *error = nil;
+    
+    //1
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    //2
+    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice
+                                                                        error:&amp;error];
+    if (!input || error) {
+        NSLog(@&quot;%@&quot;, [error localizedDescription]);
+        return NO;
+    }
+    //3
+    _captureSession = [AVCaptureSession new];
+    [_captureSession addInput:input];
+    SafeRelease(input);
+    
+    //4
+    _captureMetadataOutput = [AVCaptureMetadataOutput new];
+    [_captureMetadataOutput setRectOfInterest:CGRectMake(0.25, 0.25, 0.5, 0.5)];
+    [_captureSession addOutput:_captureMetadataOutput];
+    
+    //5
+    dispatchQueue = dispatch_queue_create(&quot;QRQueue&quot;, NULL);
+    [_captureMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
+    [_captureMetadataOutput setMetadataObjectTypes:[NSArray arrayWithObject:AVMetadataObjectTypeQRCode]];
+    
+    //6
+    _videoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_captureSession];
+    [_videoPreviewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    [_videoPreviewLayer setFrame:_rect];
+    [_ownerVC.view.layer addSublayer:_videoPreviewLayer];
+    
+    //7
+    [_captureSession startRunning];
+    
+    return YES;
+    
+}
+</code></pre>
+
+<p>接下来一步步解释上述代码：</p>
+
+<ol>
+<li>初始化捕捉设备，并且该设备类型为视频设备<strong>AVMediaTypeVideo</strong></li>
+<li>利用<strong>captureDevice</strong>生成输入源<strong>AVCaptureDeviceInput</strong>，从而此输入源交给<strong>AVCaptureSession</strong>来协调处理。</li>
+<li>初始化<strong>_captureSession</strong>协调输入输出，并将输入源<strong>input</strong>赋值。</li>
+<li>生成输出源<strong>_captureMetadataOutput</strong>，并将它付给<strong>AVCaptureSession</strong>，<strong>rectOfInterest</strong>表示将输出源可识别的范围控制在一个方形中。</li>
+<li>注册一个线程，并在该线程中设置<strong>_captureMetadataOutput</strong>代理为<strong>self</strong>。</li>
+<li>初始化<strong>_videoPreviewLayer</strong>来承载<strong>input</strong>提供的画面，并将其加在目标视图上。</li>
+</ol>
+
+<p>接下来实现其<strong>startReading</strong>，<strong>stopReading</strong>方法：</p>
+
+<pre><code class="language-Objective-c">- (void)startReading{
+    [_captureSession startRunning];
+}
+
+-(void)stopReading{
+    [_captureSession stopRunning];
+}
+</code></pre>
+
+<p>扫描二维码之后的回调：</p>
+
+<pre><code class="language-objectivec">- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
+    for (AVMetadataObject *object in metadataObjects) {
+        if ([[object type] isEqualToString:AVMetadataObjectTypeQRCode]
+            &amp;&amp; [object isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
+            [self stopReading];
+            if ([_ownerVC respondsToSelector:@selector(QRCodeParser:)]) {
+                [_ownerVC performSelector:@selector(QRCodeParser:)
+                                 onThread:[NSThread mainThread]
+                               withObject:object
+                            waitUntilDone:YES];
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>需要注意的是该回调触发在后台线程，如果有处理UI相关的操作请在主线程。<br/>
+接下来是有关根据二维码图片读取内容和根据内容生成二维码的代码截取：</p>
+
+<pre><code class="language-objectivec">@implementation UIImage (QRCodeGenerator)
+
+- (NSString *)QRCodeParserToContent{
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode
+                                              context:context
+                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+    NSMutableString *result = [NSMutableString new];
+    CIImage *ciImage = [CIImage imageWithCGImage:self.CGImage];
+    NSArray *features = [detector featuresInImage:ciImage];
+    if ([features count] &gt; 0) {
+        for (CIQRCodeFeature *feature in features) {
+            [result appendString:feature.messageString];
+        }
+    }else{
+        result = nil;
+    }
+    return result;
+}
+
++ (UIImage *)createQRForString:(NSString *)qrString
+                     imageSize:(CGSize)imageSize {
+    NSData *stringData = [qrString dataUsingEncoding:NSUTF8StringEncoding];
+    CIFilter *qrFilter = [CIFilter filterWithName:@&quot;CIQRCodeGenerator&quot;];
+    [qrFilter setDefaults];
+    [qrFilter setValue:stringData forKey:@&quot;inputMessage&quot;];
+    [qrFilter setValue:@&quot;M&quot; forKey:@&quot;inputCorrectionLevel&quot;];
+    
+    CIImage *outPutCIImage = qrFilter.outputImage;
+
+    CGImageRef imageRef = [[CIContext contextWithOptions:nil] createCGImage:outPutCIImage
+                                                                   fromRect:outPutCIImage.extent];
+    CGSize size = CGSizeMake(outPutCIImage.extent.size.width,
+                             outPutCIImage.extent.size.height);
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width * 10.0,
+                                                      size.height * 10.0),
+                                           NO,
+                                           1.0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetInterpolationQuality(context, kCGInterpolationNone);
+    CGContextSetAllowsAntialiasing(context, YES);
+    CGAffineTransform trans = CGAffineTransformMakeTranslation(0.0, size.height * 10.0);
+    trans = CGAffineTransformScale(trans, 10.0, -10.0);
+    CGContextConcatCTM(context, trans);
+    CGContextDrawImage(context, CGRectMake(0, 0, size.width, size.height), imageRef);
+    
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
+@end
+</code></pre>
+
+<p>接下来解释一下上面的代码：<br/>
+<strong>QRCodeParserToContent</strong>方法中，首先创建一个用来渲染<strong>CIImage</strong>的上下文<strong>context</strong>，值得注意的是<strong>CIContext</strong>线程安全，<strong>CIFilter</strong>非安全。然后创建一个<strong>detector</strong>用来探测image中得元素，用来获取一个图片中的<strong>CIFeature</strong>数组，这里<strong>CIDetectorTypeQRCode</strong>表示<strong>detector</strong>需要探测的元素为二维码。接下来的代码简洁明了，获取图片中的<strong>CIFeature</strong>，并将其中的<strong>messageString</strong>拼接返回。<br/>
+<strong>这个方法最低支持到iOS8.0</strong></p>
+
+<p><strong>createQRForString:imageSize:</strong>方法中，利用的核心类是<strong>CIFilter</strong>，这个<strong>CIFilter</strong>可以看做是一个滤镜，核心的思路是交给<strong>filter</strong>一个输入，也就是原图片，然后配置<strong>filter</strong>的属性，最后获取的<strong>outputImage</strong>就是加完滤镜的图片。方法中的<strong>imageRef</strong>就是结果图片。最后利用<strong>CoreGraphics</strong>中的绘制图片的函数绘制出<strong>UIImage</strong>。</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14761901398114.html" itemprop="url">
+		《征服C指针》阅读笔记 II</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2015-12-31 11:39:59</h2>
+
+<h3 id="toc_1">第三章 揭秘C的语法</h3>
+
+<h4 id="toc_2">3.1 解读C的声明</h4>
+
+<p>这张首先介绍的是如何读C中的声明，让你用英文的语法去理解声明，可能是岛国人民的英语比较烂，声明这里我感觉没那么多坑，容易晕的地方无非就是指针数组和数组指针，简而言之就是** * <strong>和</strong>变量名<strong>如果有小括号返回的就是指针，否则就是数组。这个问题归根结底就是</strong> * <strong>的优先级高，就拿</strong>int <em>p[10]</em><em>来说，</em>* * <strong>的优先级很高，跟int结合后就决定了返回的是</strong>int *<strong>而读到最后发现</strong>[]<strong>，自然而然就变成了</strong>返回int * 类型的数组<strong>，而如果</strong>int *<strong>加上小括号变成</strong>int (<em>p)[]</em><em>，首先返回的会是</em><em>int</em><em>,看到</em><em>[]</em><em>就知道返回的是</em><em>int数组</em><em>,最后</em><em>(</em>p)<strong>声明</strong>p**是指针，最终返回的是数组指针，这里个人感觉不要揣测Dennis Ritchie的想法，记住就好，熟而生巧。</p>
+
+<h4 id="toc_3">3.2 C的数据类型的模型</h4>
+
+<p>前半段介绍了一下数组指针的小细节。如下代码：</p>
+
+<pre><code class="language-c"> int arr[10];
+ int *p = &amp;arr;
+ printf(&quot;size ------- \n arr - %d\n &amp;arr - %d\n p - %d\n&quot;,sizeof(arr), sizeof(&amp;arr), sizeof(p));
+ printf(&quot;point ------- \n arr - %p\n &amp;arr - %p\n p - %p\n&quot;,arr, &amp;arr, p);
+</code></pre>
+
+<p>输出结果为</p>
+
+<pre><code class="language-c">size ------- 
+ arr - 40
+ &amp;arr - 8
+ p - 8
+point ------- 
+ arr - 0x7fff5fbff830
+ &amp;arr - 0x7fff5fbff830
+ p - 0x7fff5fbff830
+</code></pre>
+
+<p>可以看到最大的差别就是p和[arr]的sizeof不同，影响的地方就是两种类型的指针作自增操作的时候数值不同，两者的运用场景各有不同。这里差别来自于<strong>p</strong>是**int *<strong>类型而arr是</strong>int [10]**类型的，编译器会根据不同的类型做自增操作。</p>
+
+<p><strong>C中不存在多维数组，只不过是数组的数组</strong></p>
+
+<p>3.2.6介绍了函数指针，总结起来：</p>
+
+<ol>
+<li>从函数类型不能派生出除了指针类型之外的其他任何类型。（原因在于函数类型的大小是不定的，但是函数指针的大小是确定的）</li>
+<li>从数组类型是不能派生出函数类型的。</li>
+</ol>
+
+<p>3.2.10不完全类型，总结起来：<br/>
+C有三种类型：</p>
+
+<ol>
+<li>对象类型（char、int、数组、指针、结构体）</li>
+<li>函数类型</li>
+<li>不完全类型，结构体标记的声明就是不完全类型(void 也为不完全类型)</li>
+</ol>
+
+<p>例子：typedef struct Woman_tag Woman;声明的时候并不知道Woman的大小。<br/>
+<strong>结构体中不能存在不完全类型，但是可以存在不完全类型的指针</strong></p>
+
+<h4 id="toc_4">3.3表达式</h4>
+
+<p>略</p>
+
+<h4 id="toc_5">3.4解读C的声明</h4>
+
+<p>3.4.1介绍了<strong>const</strong>修饰符，总结：<br/>
+跟以前的认识一样，<strong>const</strong>修饰它右面整体的类型</p>
+
+<p>3.5介绍了C声明函数的参数不可以有数组，只能传递数组指针，并且重要的是<strong>int a[]</strong>和<strong>int *a</strong>等价，但是个人推荐前一种方式，因为前一种更加直观。然后作者倾向于后一种，不解。</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
+				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14761901398161.html" itemprop="url">
+		《征服C指针》阅读笔记</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">2015-12-28 14:42:11</h2>
+
+<h4 id="toc_1">缘由</h4>
+
+<p>上个周末参加了SF的分享会，听了一位来自QQ浏览器的工程师关于iOS内存管理的分享。当初认为iOS上的内存管理不重要，也不会出多大的篓子，基本概念比如引用计数什么的明白原理就好。然而听分享的时候还是云里雾里大概只能听懂70%，回去之后反思了一下，大学时候的c学的就很烂，都是只是会用，如果想精进就必须要明白其中的原理，《征服C指针》这本书以前就听说过，很多同学推荐过，不过大概是大学期间确实玩心太重，不能耐下心来去看这种既不能提高绩点，又不能和当时实习挂钩的书（当年实习的大型机真是荒废了半年多的时光啊）。想那么多，不如现在就开始做，这篇读书笔记一是为了分享，也是为了督促自己。目测会有好几篇。那就开始吧！</p>
+
+<h3 id="toc_2">第一章 从基础开始</h3>
+
+<h4 id="toc_3">1.1 什么是C</h4>
+
+<p>这一节主要介绍了c的由来，我以前一直以为<strong>sizeof</strong>只是一个函数，没想到竟然是关键字。太菜了，惭愧惭愧。</p>
+
+<h4 id="toc_4">1.2 关于指针</h4>
+
+<p>不得不说，即使是基础介绍的一章，也涨了姿势。<br/>
+这里有指针<strong>a</strong></p>
+
+<ol>
+<li>如果<strong>a</strong>保存了其他变量的地址，可以说是<strong>a</strong>指向该地址。</li>
+<li>*<strong>a</strong>等同于<strong>a</strong>指向的变量。</li>
+</ol>
+
+<p>疑问：</p>
+
+<pre><code class="language-c">    int a = 5;
+    void *b = &amp;a;
+    b++;
+    printf(&quot;%p\n&quot;,&amp;a);
+    printf(&quot;%lu\n&quot;,sizeof(int));
+    printf(&quot;%p\n&quot;,(int *)b);
+</code></pre>
+
+<p>我运行上面代码的时候地址加1并没有加4？why？<br/>
+结论：因为我声明的无类型指针，系统不知道自加的时候要加多少。</p>
+
+<h4 id="toc_5">1.3 关于数组</h4>
+
+<ol>
+<li><strong>p[i]</strong>只是*<strong>(p + i)</strong>的简写。这个结论真是涨姿势了。<strong>[]</strong>只是一个语法糖而已。</li>
+<li>使用指针的效率并不会更高。</li>
+<li>对数组进行值传递的时候，将数组整体整理成结构体成员。</li>
+</ol>
+
+<h3 id="toc_6">第二章 C是怎么使用内存的</h3>
+
+<h4 id="toc_7">2.1 虚拟地址</h4>
+
+<p>要点：程序面对的都是虚拟地址空间（这些结论已经有一定了解了）</p>
+
+<h4 id="toc_8">2.2 内存的使用方法</h4>
+
+<ol>
+<li>全局变量：定义在函数外面的变量都为全局变量</li>
+<li><strong>static</strong>：除去声明为静态变量外，全局变量加上<strong>static</strong> 后限定作用域在源代码文件中。</li>
+<li>局部变量声明在函数中。</li>
+</ol>
+
+
+			
+			
+		</div>
 
 	</article>
   
-	<div class="pagination">
-	
-<a href="../static/archives.html">Blog Archives</a>
-	 
-	    
-	</div>
+
 </div>
- <aside class="sidebar"> 
-
-	<section>
-	  <h1>Categories</h1>
-	  <ul id="recent_posts">
-	  
-	        
-	      </li>
-	   
-	  </ul>
-	</section>
-	<section>
-	  <h1>Recent Posts</h1>
-	  <ul id="recent_posts">
-	  
-	      
-		      <li class="post">
-		        <a href="../static/14703158550743.html">《征服C指针》阅读笔记</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="../static/14703158550716.html">《征服C指针》阅读笔记 II</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="../static/14703158550685.html">iOS二维码扫描识别</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="../static/14703158550637.html">FMDB阅读笔记（一)</a>
-		      </li>
-	     
-	  
-	      
-		      <li class="post">
-		        <a href="../static/14703158550587.html">Auto Layout中的VFL使用教程（译）</a>
-		      </li>
-	     
-	   
-	  </ul>
-	</section>
+<nav id="pagenavi">
+	 
 	
-</aside> </div></div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 -  -
-  <span class="credit">Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; Theme by <a href="http://octopress.org">Octopress</a></span>
-</p>
+	<div class="center"><a href="archives.html">Blog Archives</a></div>
 
-</footer>
+</nav>
+
+</div>
+
+
+
+        </div>
+			<footer id="footer" class="inner">Copyright &copy; 2014
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a> &nbsp;&nbsp; 
+Theme by <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
+      </footer>
+		</div>
+	</div>
+
+  
+    
 
 
 

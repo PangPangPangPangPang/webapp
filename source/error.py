@@ -5,7 +5,9 @@
 # @File    : error.py
 
 from inter import main
+from flask import redirect, url_for
 
 @main.route('/error')
 def error():
-    return 'errorrrrr'
+    print url_for('.index')
+    return url_for('.index')

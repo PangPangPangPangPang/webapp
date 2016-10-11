@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>  
 	  
-  	Archives - Max's Blog
+  	FMDB阅读笔记（二） - Max's Blog
   	
 	</title>
 
@@ -116,116 +116,36 @@
 		</div>	
 		<div class="mid-col">
 			<div class="mid-col-container"> <div id="content" class="inner">
-	<div itemscope itemtype="http://schema.org/Blog">
-		<section class="archives">
 
-		
-			 
-			  	<h1 style="top: auto;" class="year">2016</h1>
-			
-			
+	<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+		<h1 class="title" itemprop="name">FMDB阅读笔记（二）</h1>
+		<div class="entry-content" itemprop="articleBody">
+			<h2 id="toc_0">2016-01-26 19:36:11</h2>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901397909.html">
-					Auto Layout中的VFL使用教程（译）</a></h1>
-				</article>
-	 	
-			
-			
+<h3 id="toc_1">FMDatabase</h3>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901397970.html">
-					FMDB阅读笔记（一）</a></h1>
-				</article>
-	 	
-			
-			
+<p><strong>FMDatabase</strong>作为核心类，封装了sqlite的大部分数据库操作。<br/>
+初始化方法没什么可说的，从**- (BOOL)openWithFlags:(int)flags vfs:(NSString *)vfsName;<br/>
+**说起。</p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901398013.html">
-					FMDB阅读笔记（二）</a></h1>
-				</article>
-	 	
-			
-			
+<pre><code class="language-objectivec">- (BOOL)openWithFlags:(int)flags vfs:(NSString *)vfsName;
+</code></pre>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901398063.html">
-					iOS二维码扫描识别</a></h1>
-				</article>
-	 	
-			
-			
+<h4 id="toc_2">flags</h4>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901398114.html">
-					《征服C指针》阅读笔记 II</a></h1>
-				</article>
-	 	
-			
-			
+<p>三个必选项：<strong>SQLITE_OPEN_READONLY</strong>，<strong>SQLITE_OPEN_READWRITE</strong>，<strong>SQLITE_OPEN_CREATE</strong></p>
 
-				<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-					<div class="meta">
-						<span class="date"><time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">Oct 11</time></span>
-						<br>
-						 
-						
-						 
-						
-					    
-					</div>
-					<h1 class="title" itemprop="name"><a href="14761901398161.html">
-					《征服C指针》阅读笔记</a></h1>
-				</article>
-	 	
+<p><a href="http://www.sqlite.org/vfs.html">vfs</a></p>
 
-	  </section>
+		</div>
+	</article>
+	<div class="share-comment">
+	 
+
+	  
+
+	  
+
 	</div>
 </div>        </div>
 			<footer id="footer" class="inner">Copyright &copy; 2014
