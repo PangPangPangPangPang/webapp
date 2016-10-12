@@ -1,7 +1,7 @@
 #,gD8]y+FGbNJ-A@{
 #45.32.31.64
 from flask import Flask
-from source import AppDelegate
+from webapp.source import AppDelegate
 
 app = Flask(__name__)
 app.config.from_object(__name__)
