@@ -1,5 +1,6 @@
 from werkzeug.routing import BaseConverter
-import env_global
+
+app_global = None
 
 class RegexConverter(BaseConverter):
     def __init__(self, map, *args):
@@ -12,13 +13,13 @@ class AppDelegate():
         'global_work_path'
     }
     def __init__(self, app=None):
+        global app_global
+        app_global = app
 
         self.app = app
         self.app.config.from_object('config')
         self.app.config.from_envvar('APP_CONFIG_FILE')
-        env_global.WORK_PATH = app.config['WORK_PATH']
         self.app.url_map.converters['regex'] = RegexConverter
-
 
     def register(self):
         """

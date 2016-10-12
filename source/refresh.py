@@ -5,14 +5,14 @@
 # @File    : refresh.py
 
 from inter import main
+from root import app_global
 import os
-import env_global
 import json
 import subprocess
 
 @main.route('/update/<regex("[a-zA-Z0-9]{16}"):key>')
 def update(key):
-    os.chdir(env_global.WORK_PATH + '/MacroScript')
+    os.chdir(app_global.config['WORK_PATH'] + '/MacroScript')
     s = subprocess.Popen('python ./update.py', shell=True, stderr=subprocess.PIPE)
     s_ = subprocess.Popen('. restart.sh', shell=True, stderr=subprocess.PIPE)
     err = s.communicate()[1]
