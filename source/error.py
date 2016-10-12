@@ -5,9 +5,18 @@
 # @File    : error.py
 
 from inter import main
-from flask import redirect, url_for
+# from flask import redirect, url_for
+import json
 
 @main.route('/error')
 def error():
-    print url_for('.index')
-    return url_for('.index')
+    dic = {}
+    dic['user'] = 'wang'
+    arr = []
+    dic['friends'] = arr
+    arr.append({'name':'songyue'})
+    arr.append({'name':'www'})
+    arr.append({'name':'bbb'})
+    arr.append({'name':'ccc'})
+    ret =json.dumps(dic, indent=1)
+    return ret
