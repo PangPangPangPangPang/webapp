@@ -1,4 +1,8 @@
-from flask import render_template
+from werkzeug.routing import BaseConverter
+class RegexConverter(BaseConverter):
+    def __init__(self, map, *args):
+        self.map = map
+        self.regex = args[0]
 
 class AppDelegate():
     __slot__ = {
@@ -6,6 +10,8 @@ class AppDelegate():
     }
     def __init__(self, app=None):
         self.app = app
+        self.app.url_map.converters['regex'] = RegexConverter
+
 
     def register(self):
         """

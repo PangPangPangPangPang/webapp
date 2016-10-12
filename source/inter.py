@@ -7,4 +7,4 @@
 from flask import Blueprint
 
 main = Blueprint('inter', __name__)
-from . import error
+from . import error, refresh
