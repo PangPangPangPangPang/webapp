@@ -1,4 +1,5 @@
 from werkzeug.routing import BaseConverter
+
 class RegexConverter(BaseConverter):
     def __init__(self, map, *args):
         self.map = map
@@ -7,9 +8,13 @@ class RegexConverter(BaseConverter):
 class AppDelegate():
     __slot__ = {
         'app'
+        'global_work_path'
     }
     def __init__(self, app=None):
+
         self.app = app
+        self.app.config.from_object('config')
+        self.app.config.from_envvar('APP_CONFIG_FILE')
         self.app.url_map.converters['regex'] = RegexConverter
 
 
