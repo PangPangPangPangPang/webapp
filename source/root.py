@@ -23,6 +23,7 @@ class AppDelegate():
 
         self.app = app
         self.app.config.from_object('config')
+        self.app.config.from_pyfile('./instance/config.py')
         self.app.config.from_envvar('APP_CONFIG_FILE')
         self.app.url_map.converters['regex'] = RegexConverter
 

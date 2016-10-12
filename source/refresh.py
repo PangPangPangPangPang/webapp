@@ -10,9 +10,13 @@ import json
 import subprocess
 from root import global_value
 
-@main.route('/update/<regex("[a-zA-Z0-9]{16}"):key>')
+@main.route('/update/<regex("[a-zA-Z0-9]{32}"):key>')
 def update(key):
-    print
+    print key
+    print global_value.SECRET_KEY
+    if key != global_value.SECRET_KEY:
+        return
+
     os.chdir(global_value.WORK_PATH + '/MacroScript')
     s = subprocess.Popen('python ./update.py', shell=True, stderr=subprocess.PIPE)
     s_ = subprocess.Popen('. restart.sh', shell=True, stderr=subprocess.PIPE)
