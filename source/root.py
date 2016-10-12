@@ -1,11 +1,16 @@
 from werkzeug.routing import BaseConverter
 
-app_global = None
-
 class RegexConverter(BaseConverter):
     def __init__(self, map, *args):
         self.map = map
         self.regex = args[0]
+
+class GlobalValue(object):
+    def __getattr__(self, item):
+        return app_global.config[item]
+
+app_global = None
+global_value = GlobalValue()
 
 class AppDelegate():
     __slot__ = {
