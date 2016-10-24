@@ -126,6 +126,258 @@
 	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
 		<div class="meta">
 			<div class="date">
+				<time datetime="2016-10-24T09:51:58+08:00" itemprop="datePublished">2016/10/24</time>
+			</div>
+			
+			 
+			
+		</div>
+		<h1 class="title" itemprop="name"><a href="14772739181927.html" itemprop="url">
+		ObjC runtime源码 阅读笔记（一）</a></h1>
+		<div class="entry-content" itemprop="articleBody">
+			
+			<h2 id="toc_0">今天开始记录一系列的阅读笔记，顺便督促一下自己阅读runtime的源码，本文的源码来自于<a href="http://opensource.apple.com/source/objc4/">apple opensource</a>。</h2>
+
+<h2 id="toc_1">1.objc-private.h</h2>
+
+<p>打开头文件就看到了两个熟悉的结构体指针</p>
+
+<pre><code class="language-c">typedef struct objc_class *Class;
+typedef struct objc_object *id;
+</code></pre>
+
+<p>我们会经常用到<strong>id</strong>这个指针，比较老的<strong>Foundation</strong>框架中，一般的初始化方法都会返回一个<strong>id</strong>对象，并且一些有iOS编程经验的老鸟也会说<strong>ObjC</strong>中的所有对象都可以强转成<strong>id</strong>类型。那么现在就来分析一下<strong>id</strong>究竟是个什么东东。</p>
+
+<p>从源码来看真的是好长的一坨结构体,首先看到的是一个<strong>isa_t</strong>的<strong>union</strong>：</p>
+
+<pre><code class="language-c">private:
+    isa_t isa;
+</code></pre>
+
+<p>这个<strong>isa_t</strong>用一句话概括就是：</p>
+
+<blockquote>
+<p>对64位的设备对象进行类对象指针的优化，利用合理的bit（arm64设备为32位）存储类对象的地址，其他位用来进行内存管理。这种优化模式被称为<strong>tagged pointer</strong>。用在<strong>isa_t</strong>的实现中称作<strong>IndexedIsa</strong>。</p>
+</blockquote>
+
+<p>下面是<strong>isa_t</strong>在<strong>arm64</strong>架构下的结构：</p>
+
+<pre><code class="language-c">union isa_t 
+{
+    uintptr_t bits;
+    
+#   define ISA_MASK        0x00007ffffffffff8ULL
+#   define ISA_MAGIC_MASK  0x001f800000000001ULL
+#   define ISA_MAGIC_VALUE 0x001d800000000001ULL
+    struct {
+        uintptr_t indexed           : 1;
+        uintptr_t has_assoc         : 1;
+        uintptr_t has_cxx_dtor      : 1;
+        uintptr_t shiftcls          : 33; // MACH_VM_MAX_ADDRESS 0x1000000000
+        uintptr_t magic             : 6;
+        uintptr_t weakly_referenced : 1;
+        uintptr_t deallocating      : 1;
+        uintptr_t has_sidetable_rc  : 1;
+        uintptr_t extra_rc          : 19;
+#       define RC_ONE   (1ULL&lt;&lt;45)
+#       define RC_HALF  (1ULL&lt;&lt;18)
+    };
+};
+</code></pre>
+
+<ul>
+<li>indexed：标记是否启动指针优化</li>
+<li>has_assoc：是否有关联对象</li>
+<li>has_cxx_dtor：是否有析构器</li>
+<li>shiftcls：类对象指针</li>
+<li>magic：标记初始化完成</li>
+<li>weakly_refrenced：是否弱饮用</li>
+<li>deallocating：是否正在释放</li>
+<li>extra_rc：引用计数（但是比retaincount小1）</li>
+</ul>
+
+<p>至此，优化情况下的isa_t包含的内容大体总结完毕。<br/>
+回过头来继续分析<strong>objc_object</strong>内的函数。</p>
+
+<pre><code class="language-c">Class ISA() //不支持tagged pointer时候获取Class的函数
+Class getIsa() //支持tagged pointer时候获取Class的函数
+</code></pre>
+
+<p>下面是一系列isa初始化的函数：</p>
+
+<pre><code class="language-c">void initIsa(Class cls /*indexed=false*/);
+void initClassIsa(Class cls /*indexed=maybe*/);
+void initProtocolIsa(Class cls /*indexed=maybe*/);
+void initInstanceIsa(Class cls, bool hasCxxDtor);
+</code></pre>
+
+<p>值得注意的是这几个函数最后调用的都是</p>
+
+<pre><code class="language-c">inline bool objc_object::initIsa(Class cls, bool indexed, bool hasCxxDtor) 
+</code></pre>
+
+<p>下面的函数是用来改变一个对象的Class：</p>
+
+<pre><code class="language-c">Class changeIsa(Class newCls);
+</code></pre>
+
+<p>印象中KVO的实现中，会改变一个对象的Class，以后会带来验证。<br/>
+接下来的一些列函数顾名思义，我也不做解释，内部的实现基本也都是依赖于<strong>isa</strong>来进行的。</p>
+
+<pre><code class="language-c">    // changeIsa() should be used to change the isa of existing objects.
+    // If this is a new object, use initIsa() for performance.
+    Class changeIsa(Class newCls);
+
+    bool hasIndexedIsa();
+    bool isTaggedPointer();
+    bool isClass();
+
+    // object may have associated objects?
+    bool hasAssociatedObjects();
+    void setHasAssociatedObjects();
+
+    // object may be weakly referenced?
+    bool isWeaklyReferenced();
+    void setWeaklyReferenced_nolock();
+    
+    // object may have -.cxx_destruct implementation?
+    bool hasCxxDtor();
+</code></pre>
+
+<p>这里我解释一下下面这两个方法的区别。</p>
+
+<pre><code class="language-c">bool hasIndexedIsa();
+bool isTaggedPointer();
+</code></pre>
+
+<p>本质上这两个函数都是来判断某个指针是否启用了tagged pointer。不同的是<br/>
+<strong>bool hasIndexedIsa();</strong>是用来判断当前对象的<strong>isa</strong>是否启用<strong>tagged pointer</strong>，而<strong>bool isTaggedPointer();</strong>函数用来判断当前的对象指针是否启用了<strong>tagged pointer</strong>。根据我的调研，比如<strong>NSNumber</strong>、<strong>NSDate</strong>等值占用内存比较少的对象启用了<strong>tagged pointer</strong>。</p>
+
+<p>接下来是一系列管理引用计数以及生命周期的函数：</p>
+
+<pre><code class="language-c">// Optimized calls to retain/release methods
+    id retain();
+    void release();
+    id autorelease();
+    // Implementations of retain/release methods
+    id rootRetain();
+    bool rootRelease();
+    id rootAutorelease();
+    bool rootTryRetain();
+    bool rootReleaseShouldDealloc();
+    uintptr_t rootRetainCount();
+
+    // Implementation of dealloc methods
+    bool rootIsDeallocating();
+    void clearDeallocating();
+    void rootDealloc();
+</code></pre>
+
+<p>是不是很熟悉呢？先看一下<strong>id retain()</strong>的内部实现：</p>
+
+<pre><code class="language-c">inline id 
+objc_object::retain()
+{
+    // UseGC is allowed here, but requires hasCustomRR.
+    assert(!UseGC  ||  ISA()-&gt;hasCustomRR());
+    assert(!isTaggedPointer());
+
+    if (! ISA()-&gt;hasCustomRR()) {
+        return rootRetain();
+    }
+
+    return ((id(*)(objc_object *, SEL))objc_msgSend)(this, SEL_retain);
+}
+</code></pre>
+
+<p>翻译一下，如果使用GC但是并没有custom的retain/release方法则会直接断言掉，如果支持tagged pointer这回直接断言掉。接下来的流程就是如果没有custom的retain/release方法就会调用rootRetain()。兜兜转转最后会调用如下方法：</p>
+
+<pre><code class="language-c">
+ALWAYS_INLINE id 
+objc_object::rootRetain(bool tryRetain, bool handleOverflow)
+{
+    assert(!UseGC);
+    if (isTaggedPointer()) return (id)this;
+
+    bool sideTableLocked = false;
+    bool transcribeToSideTable = false;
+
+    isa_t oldisa;
+    isa_t newisa;
+
+    do {
+        transcribeToSideTable = false;
+        oldisa = LoadExclusive(&amp;isa.bits);
+        newisa = oldisa;
+        if (!newisa.indexed) goto unindexed;
+        // don&#39;t check newisa.fast_rr; we already called any RR overrides
+        if (tryRetain &amp;&amp; newisa.deallocating) goto tryfail;
+        uintptr_t carry;
+        newisa.bits = addc(newisa.bits, RC_ONE, 0, &amp;carry);  // extra_rc++
+
+        if (carry) {
+            // newisa.extra_rc++ overflowed
+            if (!handleOverflow) return rootRetain_overflow(tryRetain);
+            // Leave half of the retain counts inline and 
+            // prepare to copy the other half to the side table.
+            if (!tryRetain &amp;&amp; !sideTableLocked) sidetable_lock();
+            sideTableLocked = true;
+            transcribeToSideTable = true;
+            newisa.extra_rc = RC_HALF;
+            newisa.has_sidetable_rc = true;
+        }
+    } while (!StoreExclusive(&amp;isa.bits, oldisa.bits, newisa.bits));
+
+    if (transcribeToSideTable) {
+        // Copy the other half of the retain counts to the side table.
+        sidetable_addExtraRC_nolock(RC_HALF);
+    }
+
+    if (!tryRetain &amp;&amp; sideTableLocked) sidetable_unlock();
+    return (id)this;
+
+ tryfail:
+    if (!tryRetain &amp;&amp; sideTableLocked) sidetable_unlock();
+    return nil;
+
+ unindexed:
+    if (!tryRetain &amp;&amp; sideTableLocked) sidetable_unlock();
+    if (tryRetain) return sidetable_tryRetain() ? (id)this : nil;
+    else return sidetable_retain();
+}
+</code></pre>
+
+<p>这段代码确实值得仔细研读,转换成伪代码的形式为：</p>
+
+<pre><code class="language-c">ALWAYS_INLINE id 
+objc_object::rootRetain(bool tryRetain, bool handleOverflow)
+{
+   if (not support tagged pointer) return this;
+   do {
+       if (isa not support indexed) 
+           sidetable_tryRetain(); //利用sidetable进行管理对象的引用计数。 
+       if (isa support indexed)
+           newisa.bits = addc(newisa.bits, RC_ONE, 0, &amp;carry);  // extra_rc+
+   }
+}
+</code></pre>
+
+<p>当然内部还有一些力<strong>retry</strong>已经对于<strong>overflow</strong>的处理，这篇文章就不做过多的分析。但是大体上对于没有进行<strong>isa</strong>的<strong>indexed</strong>优化的对象的引用计数是依赖于<strong>SideTable()</strong>管理，而进行<strong>indexed</strong>优化的对象则直接利用<strong>isa</strong>指针进行管理。</p>
+
+<p>接下来的private函数我就不多做分析了，值得注意的是，里面有很多有关于<strong>sidetable</strong>的函数，但是这些函数是在<strong>NSObject.mm</strong>中实现的。</p>
+
+<p>这样有关于<strong>objc_obejct</strong>这个结构体的分析就到此为止。接下来还有一系列的文章进行分析。加油！</p>
+
+
+			
+			
+		</div>
+
+	</article>
+ 
+	<article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+		<div class="meta">
+			<div class="date">
 				<time datetime="2016-10-11T20:48:59+08:00" itemprop="datePublished">2016/10/11</time>
 			</div>
 			
