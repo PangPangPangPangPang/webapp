@@ -50,7 +50,7 @@ union isa_t
 * has_cxx_dtor：是否有析构器
 * shiftcls：类对象指针
 * magic：标记初始化完成
-* weakly_refrenced：是否若饮用
+* weakly_refrenced：是否弱引用
 * deallocating：是否正在释放
 * extra_rc：引用计数-1
 
