@@ -5,12 +5,12 @@
 # @File    : md.py
 
 from inter import main
-# from flask import redirect, url_for
+from flask import redirect, url_for, make_response
 import json
+import os
+from generate_blog_articles import generate
 
-@main.route('/main')
-def main():
-    dic = {}
-    dic['content'] = open('../resource/Auto Layout中的VFL使用教程（译）.md', 'rb').read()
-    ret = json.dumps(dic, indent=1)
-    return ret
+@main.route('/md')
+def md():
+    generate()
+    return 'success'

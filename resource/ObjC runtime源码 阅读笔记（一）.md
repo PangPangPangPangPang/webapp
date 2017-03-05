@@ -1,6 +1,8 @@
 # ObjC runtime源码 阅读笔记（一）
 今天开始记录一系列的阅读笔记，顺便督促一下自己阅读runtime的源码，本文的源码来自于[apple opensource](http://opensource.apple.com/source/objc4/)。
 -------
+[date] 2016-10-25 12:35:36
+[tag] Objective-C runtime
 ## 1.objc-private.h
 打开头文件就看到了两个熟悉的结构体指针
 

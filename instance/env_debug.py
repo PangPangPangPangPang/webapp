@@ -5,4 +5,4 @@
 # @File    : env_debug.py
 
 DEBUG = True
-WORK_PATH = '/Users/Max/flask_proj/webapp/'
+WORK_PATH = '/Users/wangyefeng/flask_proj/webapp/'
