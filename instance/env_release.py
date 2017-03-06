@@ -5,4 +5,4 @@
 # @File    : env_release.py.py
 
 DEBUG = False
-WORK_PATH = '/root/flask_proj/webapp'
+WORK_PATH = '/root/flask_proj/webapp/'
