@@ -55,6 +55,8 @@ def generate():
         article_dic['title'] = title
         article_dic['tags'] = tag
         article_dic['time'] = time
+        if not title or not _id:
+            continue
         arthicles.append(article_dic)
 
     ret = json.dumps(arthicles, indent=1)
