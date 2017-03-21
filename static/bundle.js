@@ -15950,45 +15950,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var renderer = new _marked2.default.Renderer();
 
-renderer.heading = function heading(text, level) {
-  var content = '';
-  if (level === 1) {
-    content = text + '<br/>';
-  } else {
-    content = '<br/>' + text + '<br/>';
-  }
-  var escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  return '<h' + level + '><a name="' + escapedText + '" class="anchor" href="#' + escapedText + '"><span class="header-link"></span></a>' + content + '</h' + level + '>';
-};
-
-renderer.list = function list(body) {
-  return '<div class="article-list" >' + body + '</div>';
-};
-
-// renderer.list = function list(body, ordered) {
-// const type = ordered ? 'ol' : 'ul'
-// const attrs = {
-// type: '',
-// start: '',
-// }
-
-// if (+ordered || +ordered === 0) {
-// if (+ordered !== 1) {
-// attrs.start = `start="${ordered}"`
-// }
-// } else {
-// const typeCase = (ordered === ordered.toUpperCase()) ? 'A' : 'a'
-// attrs.type = `type="${typeCase}"`
-// const startLetter = ordered.toString().toUpperCase().charCodeAt(0) - 64
-// attrs.start = (startLetter > 1 && startLetter < 9) ? `start="${startLetter}"` : ''
-// }
-// const attr = [attrs.type, attrs.start].filter(x => x).join(' ')
-
-// return `<${type} ${attr}>
-// ${body}
-// </${type}>
-// `
-// }
 _marked2.default.setOptions({
   highlight: function highlight(code) {
     return '<div class="article-code" >' + _highlight2.default.highlightAuto(code).value + '</div>';
@@ -16003,6 +15964,30 @@ _marked2.default.setOptions({
   smartLists: true,
   smartypants: true
 });
+
+renderer.heading = function heading(text, level) {
+  var font = 24 - level * 2;
+  return '<div style="font-size: ' + font + 'px;margin-bottom: 10px"><strong>' + text + '</strong></div>';
+};
+
+renderer.paragraph = function paragraph(text) {
+  return '<div class="article-paragraph">' + text + '</div>';
+};
+
+renderer.list = function list(body, ordered) {
+  var type = ordered ? 'lower-roman' : 'circle';
+  return '<ul style="list-style-type: ' + type + '; margin-left: 20px; font-size: 15px; margin-bottom: 20px;">' + body + '</ul>';
+};
+
+renderer.listitem = function listitem(text) {
+  return '<li>' + text + '</li>';
+};
+
+renderer.blockquote = function em(text) {
+  console.log('//////');
+  console.log(text);
+  return '<blockquote>' + text + '</blockquote>';
+};
 
 var Article = function (_React$Component) {
   _inherits(Article, _React$Component);
@@ -19533,7 +19518,7 @@ exports = module.exports = __webpack_require__(13)();
 
 
 // module
-exports.push([module.i, ".article-font {\n  font-size: 25px;\n}\n.article-page {\n  padding-top: 2%;\n  padding-bottom: 2%;\n  padding-left: 10%;\n  padding-right: 10%;\n}\n\n.article-list {\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.article-code {\n  background-color: black;\n  border-style: inherit;\n  color: white;\n  padding: 20px;\n}\n/*\n\nOrginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>\n\n*/\n\n.hljs {\n  display: block;\n  overflow-x: auto;\n  padding: 0.5em;\n  background: #002b36;\n  color: #839496;\n}\n\n.hljs-comment,\n.hljs-quote {\n  color: #586e75;\n}\n\n/* Solarized Green */\n.hljs-keyword,\n.hljs-selector-tag,\n.hljs-addition {\n  color: #859900;\n}\n\n/* Solarized Cyan */\n.hljs-number,\n.hljs-string,\n.hljs-meta .hljs-meta-string,\n.hljs-literal,\n.hljs-doctag,\n.hljs-regexp {\n  color: #2aa198;\n}\n\n/* Solarized Blue */\n.hljs-title,\n.hljs-section,\n.hljs-name,\n.hljs-selector-id,\n.hljs-selector-class {\n  color: #268bd2;\n}\n\n/* Solarized Yellow */\n.hljs-attribute,\n.hljs-attr,\n.hljs-variable,\n.hljs-template-variable,\n.hljs-class .hljs-title,\n.hljs-type {\n  color: #b58900;\n}\n\n/* Solarized Orange */\n.hljs-symbol,\n.hljs-bullet,\n.hljs-subst,\n.hljs-meta,\n.hljs-meta .hljs-keyword,\n.hljs-selector-attr,\n.hljs-selector-pseudo,\n.hljs-link {\n  color: #cb4b16;\n}\n\n/* Solarized Red */\n.hljs-built_in,\n.hljs-deletion {\n  color: #dc322f;\n}\n\n.hljs-formula {\n  background: #073642;\n}\n\n.hljs-emphasis {\n  font-style: italic;\n}\n\n.hljs-strong {\n  font-weight: bold;\n}\n\n", ""]);
+exports.push([module.i, ".article-paragraph {\n  font-size: 15px;\n  margin-bottom: 20px;\n}\n.article-page {\n  padding-top: 2%;\n  padding-bottom: 2%;\n  padding-left: 15%;\n  padding-right: 15%;\n}\n\n.article-list {\n  font-size: 15px;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.article-code {\n  margin-top: 10px;\n  background-color: black;\n  border-style: inherit;\n  color: white;\n  padding: 20px;\n}\nblockquote {\nbackground:#f9f9f9;\nborder-left:10px solid #ccc;\nmargin:1.5em 10px;\npadding:.5em 10px;\nquotes:\"\\201C\"\"\\201D\"\"\\2018\"\"\\2019\";\n}\nblockquote:before {\ncolor:#ccc;\ncontent:open-quote;\nfont-size:4em;\nline-height:.1em;\nmargin-right:.25em;\nvertical-align:-.4em;\n}\nblockquote p {\ndisplay:inline;\n}\n/*\n\nOrginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>\n\n*/\n\n.hljs {\n  display: block;\n  overflow-x: auto;\n  padding: 0.5em;\n  background: #002b36;\n  color: #839496;\n}\n\n.hljs-comment,\n.hljs-quote {\n  color: #586e75;\n}\n\n/* Solarized Green */\n.hljs-keyword,\n.hljs-selector-tag,\n.hljs-addition {\n  color: #859900;\n}\n\n/* Solarized Cyan */\n.hljs-number,\n.hljs-string,\n.hljs-meta .hljs-meta-string,\n.hljs-literal,\n.hljs-doctag,\n.hljs-regexp {\n  color: #2aa198;\n}\n\n/* Solarized Blue */\n.hljs-title,\n.hljs-section,\n.hljs-name,\n.hljs-selector-id,\n.hljs-selector-class {\n  color: #268bd2;\n}\n\n/* Solarized Yellow */\n.hljs-attribute,\n.hljs-attr,\n.hljs-variable,\n.hljs-template-variable,\n.hljs-class .hljs-title,\n.hljs-type {\n  color: #b58900;\n}\n\n/* Solarized Orange */\n.hljs-symbol,\n.hljs-bullet,\n.hljs-subst,\n.hljs-meta,\n.hljs-meta .hljs-keyword,\n.hljs-selector-attr,\n.hljs-selector-pseudo,\n.hljs-link {\n  color: #cb4b16;\n}\n\n/* Solarized Red */\n.hljs-built_in,\n.hljs-deletion {\n  color: #dc322f;\n}\n\n.hljs-formula {\n  background: #073642;\n}\n\n.hljs-emphasis {\n  font-style: italic;\n}\n\n.hljs-strong {\n  font-weight: bold;\n}\n\n", ""]);
 
 // exports
 
