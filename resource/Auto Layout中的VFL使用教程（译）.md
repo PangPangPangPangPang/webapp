@@ -20,7 +20,7 @@ Auto Layout的可视格式化语言（以下简称VFL）允许使用者通过ASC
 ### 准备开始吧！
 首先下载[事例工程](http://cdn4.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Starter.zip
 )便于教程使用，该工程提供了一个初级网络社交app-**Grapevine**的基本欢迎页面。在Xcode中运行工程；你将看到如下画面（在模拟器的**Hardware\Rotate Right**中旋转屏幕）:
-![welcomepage](http://cdn4.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Initial-Screen.png)
+![welcomepage](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Initial-Screen.png)
 好吧，这个页面真是一团乱，为什么这种情况会发生呢？面对这种情况我们应该怎么做呢？
 当前界面的所有元素都是跟界面的上边缘（top）和左边缘（left）联系的，这是因为它们没有用Auto Layout约束。通过接下来的教程你会让视图看起来更漂亮。
 打开**Main.storyboard**观察界面元素。注意到这些元素都被设置为在编译期移除Auto Layout约束。你不应该在真实项目中这样使用，但是这会让你节省一些元素的初始化时间。
@@ -30,7 +30,7 @@ Auto Layout的可视格式化语言（以下简称VFL）允许使用者通过ASC
 ### VFL语法
 在你开始编写布局和约束之前，你需要有一些关于VFL格式化串的相关知识。
 第一件要知道的事情：VFL格式化串可以分成如下组成：
-![formatString](http://cdn1.raywenderlich.com/wp-content/uploads/2015/07/VisualFormatLanguageOptionsImage.png)
+![formatString](https://koenig-media.raywenderlich.com/uploads/2015/07/VisualFormatLanguageOptionsImage.png)
 接下来一个一个解释VFL格式化串：
 
 1. 约束的方向，非必须。可以有以下的值：
@@ -75,7 +75,9 @@ VFL使用一系列符号去描述布局
 * -20@750- iconLabel的的尾边缘和iconDate的头边缘有20pt的距离，设置成高权重，如果出现冲突Auto Layout不会打破这条约束。
 * [iconDate(>=50)] iconDate的宽度应该大于等于50pt。
 * -| iconDate的尾边缘和父视图的尾边缘有一个标准间距。
-![good](http://cdn5.raywenderlich.com/wp-content/uploads/2015/08/got_it.png)
+
+![good](https://koenig-media.raywenderlich.com/uploads/2015/08/got_it.png)
+
 现在你对VFL已经有了一个基本的认识--接下来就要把这些知识用到实际应用中了。
 
 ### 创建约束
@@ -91,8 +93,7 @@ pageControl.hidden = true
 ```
 
 这些代码会隐藏除了**iconImageView**，**appNameLabel**和**skipButton**之外的元素。运行工程；你会看到如下：
-![good](http://cdn2.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Hidden-Icons.png
-)
+![good](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Hidden-Icons.png)
 棒！你现在已经清除了烦人的元素了，现在在**viewDidLoad()**添加如下代码：
 
 ```swift
@@ -153,7 +154,7 @@ NSLayoutConstraint.activateConstraints(allConstraints)
 >**注意：在views字典中的key必须在格式化串中得view串匹配。如果没有，Auto Layout将不能找到引用并且在runtime崩溃。**
 
 运行工程，元素现在看起来怎么样？
-![good](http://cdn1.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Horizontal-Layout.png)
+![good](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Horizontal-Layout.png)
 哈哈，看看是不是已经变得好看多了？
 现在把它放着，这不过是个前戏（误）。你还要有一大坨代码要写呢，但是到最后这些都是值得的。
 接下来，你需要给剩下的元素布局，首先，你需要把最开始加到**viewDidLoad()**的代码去掉。不要有怨言，删除下面这些：
@@ -239,9 +240,9 @@ allConstraints += summaryToPageVerticalConstraints
 5. 创建summary label和page control的垂直约束，两者相距15pt，并且page control高度为9pt，和父视图的底边缘距离15。
 
 运行工程；这些元素看起来怎么样？ 
-![good](http://cdn3.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Layout-Before-Options.png)
+![good](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Layout-Before-Options.png)
 现在看起来还不错了哦。错，其中的一些元素的布局是正确的，然后，有些并没有，image和page control并没有居中！
-![bad](http://cdn2.raywenderlich.com/wp-content/uploads/2015/07/No-Center-RageMakger.png)
+![bad](https://koenig-media.raywenderlich.com/uploads/2015/07/No-Center-RageMakger.png)
 不要害怕，下一节将会告诉你更多关于布局的工具。
 
 ### Layout Options
@@ -309,7 +310,7 @@ let imageToWelcomeVerticalConstraints = NSLayoutConstraint.constraintsWithVisual
 ```
 
 运行工程，看看发生了什么？
-![perfect](http://cdn1.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-SublayoutViewHeights.png)
+![perfect](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-SublayoutViewHeights.png)
 感觉都居中了是吧？Layout Options让你做出了一个更棒的交互界面。
 
 ###NSLayoutFormat选项快速参考
@@ -402,7 +403,7 @@ let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
 ```
 
 这样你就把状态栏和**iconImageView**之间的20pt的距离移除了，运行代码：
-![remove](http://cdn2.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Without-20pts.png)
+![remove](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Without-20pts.png)
 现在你的状态栏覆盖掉了视图上的一些元素。在横屏模式时，iOS为了给小屏幕设备提供更多的有效空间移除状态栏，这样**iconImageView**会紧靠在屏幕的上方。
 使用**topLayoutGuide**将会解决这种问题，用如下代码代替**views**字典：
 
@@ -430,7 +431,7 @@ let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat(
 ```
 
 接下来运行工程，完美！  
-![PERFECT](http://cdn5.raywenderlich.com/wp-content/uploads/2015/09/Grapevine-Final.png)
+![PERFECT](https://koenig-media.raywenderlich.com/uploads/2015/09/Grapevine-Final.png)
 现在你的顶部的界面元素都依赖着**topLayoutGuide**布局并且无论在横屏或者竖屏模式下状态栏的展现都控制着布局。
 在这一节，你已经学会了当界面存在状态栏的时候如何利用**topLayoutGuide**来控制界面元素的布局。如果你的视图控制器在**UINavigationController**中，**topLayoutGuide**将会包含状态栏和**UINavigationBar**的状态。同时，如果你的试图控制器在**UITabBarController**中，**bottomLayoutGuide**将会提供底部边缘的状态。
 
@@ -444,7 +445,7 @@ VFL让你用一行代码写出了多个约束，大大降低了手指的负担�
 在**Grapevine**中，你用了**.AlignAllCenterY**和**.AlignAllCenterX**。
 使用这些表示你让一些视图和其他的一些视图的垂直中心或者水平中心对齐，然而只有在这些视图中存在已经有足够约束能够确定它们的水平和垂直中心位置的时候才能变得有效。
 即使现在通过VFL你可以用一些小把戏来处理中心视图，但是这也不保证在将来的版本中依然有效。
-![CONSTRAIN](http://cdn3.raywenderlich.com/wp-content/uploads/2015/08/constraints_constraining.png)
+![CONSTRAIN](https://koenig-media.raywenderlich.com/uploads/2015/08/constraints_constraining.png)
 
 ####使用约束中的Multiplier
 通过Multiplier，你可以通过比例来对视图进行布局，比如你可以让一个label的宽度是它父视图的60%。由于VFL会同时创建多个没有名字的约束，所以不能通过格式化串来设置百分比系数。
