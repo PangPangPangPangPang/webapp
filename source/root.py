@@ -82,7 +82,6 @@ class AppDelegate():
         @self.app.route('/<path:path>')
         @gzipped
         def static_file(path):
-            print(path)
             return self.app.send_static_file(path)
 
 
