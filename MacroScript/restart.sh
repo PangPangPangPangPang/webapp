@@ -1,7 +1,8 @@
 #!/bin/bash
+# this script must run under ./MacroScript/
 
 path="../../bin/"
-if [ ! -d "$path" ]; then
+    if [ ! -d "$path" ]; then
 path="../bin/"
 fi
 
@@ -10,7 +11,7 @@ echo '.....'
 pwd
 echo '.....'
 
-. activate
+. ./activate
 cd ../webapp
 pkill gunicorn
 gunicorn --workers=4 --bind=127.0.0.1:8000 index:app
