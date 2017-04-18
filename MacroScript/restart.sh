@@ -1,15 +1,8 @@
 #!/bin/bash
 # this script must run under ./MacroScript/
 
-path="../../bin/"
-    if [ ! -d "$path" ]; then
-path="../bin/"
-fi
 
-cd $path
-echo '.....'
-pwd
-echo '.....'
+cd $HOME/flask_proj/bin
 
 . ./activate
 cd ../webapp
