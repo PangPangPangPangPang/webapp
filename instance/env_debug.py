@@ -4,5 +4,7 @@
 # @Author  : Max
 # @File    : env_debug.py
 
+import os
+
 DEBUG = True
-WORK_PATH = '/Users/wangyefeng/flask_proj/webapp/'
+WORK_PATH = os.environ['HOME'] + '/flask_proj/webapp/'
