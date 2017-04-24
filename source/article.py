@@ -22,6 +22,7 @@ def article():
         json_path = global_value.WORK_PATH + 'articles/' + article_id + '.md'
         art = open(json_path).read()
         dic['content'] = art
+        dic['article_id'] = article_id
     else:
         dic['content'] = '文章不存在'
     ret = json.dumps(dic)
