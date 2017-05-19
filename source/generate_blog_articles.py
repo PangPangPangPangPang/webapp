@@ -3,6 +3,8 @@ import shutil
 import hashlib
 import json
 from root import global_value
+from datetime import datetime
+import time
 
 
 def generate():
@@ -59,7 +61,19 @@ def generate():
             continue
         arthicles.append(article_dic)
 
+    arthicles = sorted(arthicles, key=sortByDate, reverse=True)
     ret = json.dumps(arthicles, indent=1)
+
     json_file = open('./list.json', 'w')
     json_file.writelines(ret)
     json_file.close()
+
+
+# sort by date
+def sortByDate(item):
+    datetime_obj = datetime.strptime(item['time'], "%Y-%m-%d %H:%M:%S")
+    ret = time.mktime(datetime_obj.timetuple())
+    return ret
+
+
+
