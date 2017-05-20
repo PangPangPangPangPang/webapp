@@ -8,4 +8,5 @@ from flask import Blueprint
 
 
 main = Blueprint('inter', __name__)
-from . import error, refresh, md, list, article
+
+from . import error, refresh, md, list, article, chat

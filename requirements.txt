@@ -6,3 +6,5 @@ Jinja2==2.8
 MarkupSafe==0.23
 Werkzeug==0.11.10
 flask-crossdomain
+flask-socketio
+flask_sockets
