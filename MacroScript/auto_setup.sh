@@ -36,6 +36,5 @@ pip install -r requirements.txt
 
 # start gunicorn
 pkill gunicorn
-gunicorn --workers=4 --bind=127.0.0.1:8000 index:app
-
+gunicorn -k flask_sockets.worker -b 127.0.0.1:8000 index:app
 
