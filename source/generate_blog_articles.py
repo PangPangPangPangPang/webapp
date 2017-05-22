@@ -12,7 +12,7 @@ def generate():
     print path
     articles_path = path + 'articles'
     resource_path = path + 'resource'
-    shutil.rmtree(articles_path, ignore_errors = True)
+    shutil.rmtree(articles_path, ignore_errors=True)
     shutil.copytree(resource_path, articles_path)
     os.chdir(articles_path)
 
@@ -74,6 +74,3 @@ def sortByDate(item):
     datetime_obj = datetime.strptime(item['time'], "%Y-%m-%d %H:%M:%S")
     ret = time.mktime(datetime_obj.timetuple())
     return ret
-
-
-
