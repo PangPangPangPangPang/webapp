@@ -5,10 +5,8 @@
 # @File    : md.py
 
 from inter import main
-from flask import redirect, url_for, make_response
-import json
-import os
 from generate_blog_articles import generate
+
 
 @main.route('/md')
 def md():

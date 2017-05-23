@@ -13,8 +13,6 @@ from root import global_value
 
 @main.route('/update/<regex("[a-zA-Z0-9]{32}"):key>')
 def update(key):
-    print key
-    print global_value.SECRET_KEY
     if key != global_value.SECRET_KEY:
         return
 

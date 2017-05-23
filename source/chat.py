@@ -10,6 +10,7 @@ from inter import main
 from flask import request
 import uuid
 import json
+from source import Mongo_db
 
 
 namespace = 'chat_namespace'
@@ -91,6 +92,13 @@ def chat():
                     isGenerateSuccess = generateAndAddChat(message_obj, ws)
                     if message_obj['action'] == 'register':
                         if isGenerateSuccess:
+                            db = Mongo_db()
+                            try:
+                                db.addUser({
+                                    'name': 'wangyefeng'
+                                    })
+                            except BaseException, exception:
+                                print exception
                             print 'register success'
                             ret = {'message': 'Register success!'}
                             ws.send(json.dumps(ret, indent=1))
