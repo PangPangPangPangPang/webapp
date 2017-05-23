@@ -10,7 +10,6 @@ from inter import main
 from flask import request
 import uuid
 import json
-import geventwebsocket
 
 
 namespace = 'chat_namespace'
@@ -22,6 +21,7 @@ class Pair(object):
     __slots__ = {
             'user_one', 'user_two'
             }
+
     def __init__(self, user_one=None, user_two=None):
         self.user_one = user_one
         self.user_two = user_two
@@ -29,6 +29,7 @@ class Pair(object):
 
 def generateId(str):
     return uuid.uuid5(uuid.NAMESPACE_DNS, str.decode().encode('utf-8'))
+
 
 def generateAndAddChat(obj, ws):
     if obj['action'] != 'register':
@@ -60,7 +61,6 @@ def generateAndAddChat(obj, ws):
     return False
 
 
-
 def getChat(obj):
     k = generateId(obj['from'] + obj['to'])
     k = str(k)
@@ -74,13 +74,13 @@ def getChat(obj):
         return None
 
 
-
 @main.route('/chat')
 def chat():
     if request.environ.get('wsgi.websocket'):
         ws = request.environ['wsgi.websocket']
         if ws is None:
-            abort(404)
+            return 'failure'
+            #  abort(404)
         else:
             while True:
                 if not ws.closed:
@@ -96,9 +96,11 @@ def chat():
                             ws.send(json.dumps(ret, indent=1))
                         continue
                     chat = getChat(message_obj)
-                    if ws is chat.user_one and chat.user_two and not chat.user_two.closed:
+                    if ws is chat.user_one and chat.user_two \
+                            and not chat.user_two.closed:
                         chat.user_two.send(message)
-                    elif ws is chat.user_two and chat.user_one and not chat.user_one.closed:
+                    elif ws is chat.user_two and chat.user_one \
+                            and not chat.user_one.closed:
                         chat.user_one.send(message)
                     else:
                         ret = {'message': 'Your friend is not online!'}
