@@ -9,4 +9,4 @@ from flask import Blueprint
 
 main = Blueprint('inter', __name__)
 
-from . import error, refresh, md, list, article, chat
+from . import error, refresh, md, list, article, chat, register

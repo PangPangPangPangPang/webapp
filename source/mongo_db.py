@@ -4,7 +4,7 @@
 # @Author  : Max
 # @File    : mongo_db.py
 from pymongo import MongoClient
-from util.singleton import singleton
+from util import singleton
 
 
 @singleton
@@ -22,7 +22,7 @@ class Mongo_db:
     def addUser(self, obj):
         post = self.getUser(obj['name'])
         if post is not None:
-            raise Exception('Already exist', post)
+            raise Exception('Already Exist', post)
         userID = self.db.users.insert_one(obj).inserted_id
         return userID
 

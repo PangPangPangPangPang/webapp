@@ -94,12 +94,10 @@ def chat():
                         if isGenerateSuccess:
                             db = Mongo_db()
                             try:
-                                db.addUser({
-                                    'name': 'wangyefeng'
-                                    })
+                                db.addUser(message_obj['content'])
                             except BaseException, exception:
-                                print exception
-                            print 'register success'
+                                ret = {'message': 'Already registered!'}
+                                ws.send(json.dumps(ret, indent=1))
                             ret = {'message': 'Register success!'}
                             ws.send(json.dumps(ret, indent=1))
                         continue

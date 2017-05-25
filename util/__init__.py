@@ -4,5 +4,4 @@
 # @Author  : Max
 # @File    : inter.py
 
-import singleton
-
+from .singleton import singleton

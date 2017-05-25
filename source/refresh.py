@@ -17,7 +17,8 @@ def update(key):
         return
 
     os.chdir(global_value.WORK_PATH + '/MacroScript')
-    s = subprocess.Popen('python ./update.py', shell=True, stderr=subprocess.PIPE)
+    s = subprocess.Popen('python ./update.py', shell=True,
+                         stderr=subprocess.PIPE)
     s_ = subprocess.Popen('. restart.sh', shell=True, stderr=subprocess.PIPE)
     err = s.communicate()[1]
     err_ = s_.communicate()[1]
