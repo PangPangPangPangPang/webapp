@@ -29,7 +29,3 @@ def register():
     ret['statusCode'] = 1
     ret['userId'] = str(_id)
     return json.dumps(ret)
-
-
-
-
