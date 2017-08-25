@@ -93,5 +93,6 @@ ENV/
 
 articles/
 
+index.html
 bundle.js
 static/
