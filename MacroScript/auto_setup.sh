@@ -51,7 +51,7 @@ fi
 
 rm $HOME/flask_proj/webapp/static/*
 cp -r $HOME/react-blog/build/* $HOME/flask_proj/webapp/static/
-cp -r $HOME/react-blog/index.html $HOME/flask_proj/webapp/static/
+cp -r $HOME/react-blog/manual_build/* $HOME/flask_proj/webapp/static/
 cp -r $HOME/flask_proj/webapp/img/* $HOME/flask_proj/webapp/static/
 
 # enter virtualenv
