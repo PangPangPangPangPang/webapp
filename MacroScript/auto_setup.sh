@@ -60,7 +60,7 @@ cd $HOME/flask_proj/bin
 
 # install requirement
 cd $HOME/flask_proj/webapp
-pip install -r requirements.txt
+pip2 nstall -r requirements.txt
 
 # start gunicorn
 pkill gunicorn
