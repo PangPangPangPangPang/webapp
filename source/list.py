@@ -12,8 +12,10 @@ from inter import main
 #  from generate_blog_articles import generate
 from root import global_value
 
+
 @main.route('/list')
 def article_list():
+    """Genrate article."""
     json_path = global_value.WORK_PATH + 'articles/list.json'
     ret = open(json_path).read()
     return ret

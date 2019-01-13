@@ -1,3 +1,4 @@
+"""Utils."""
 import os
 import shutil
 import hashlib
@@ -8,8 +9,8 @@ import time
 
 
 def generate():
+    """Generate article."""
     path = global_value.WORK_PATH
-    print path
     articles_path = path + 'articles'
     resource_path = path + 'resource'
     shutil.rmtree(articles_path, ignore_errors=True)
@@ -69,8 +70,9 @@ def generate():
     json_file.close()
 
 
-# sort by date
 def sortByDate(item):
+    """Sort by date."""
     datetime_obj = datetime.strptime(item['time'], "%Y-%m-%d %H:%M:%S")
     ret = time.mktime(datetime_obj.timetuple())
     return ret
+

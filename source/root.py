@@ -1,20 +1,25 @@
+"""Root."""
 import gzip
 import functools
 from cStringIO import StringIO as IO
 from werkzeug.routing import BaseConverter
 from flask import after_this_request, request
 
+
 class RegexConverter(BaseConverter):
     def __init__(self, map, *args):
         self.map = map
         self.regex = args[0]
 
+
 class GlobalValue(object):
     def __getattr__(self, item):
         return app_global.config[item]
 
+
 app_global = None
 global_value = GlobalValue()
+
 
 def gzipped(f):
     @functools.wraps(f)
