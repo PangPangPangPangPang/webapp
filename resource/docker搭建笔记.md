@@ -8,7 +8,7 @@
 
 -------
 [date] 2019-1-14 15:09:36
-[tag] Docker
+[tag] Docker 技术
 
 ## Docker介绍
 >首先贴一个介绍Docker的[教程](https://yeasy.gitbooks.io/docker_practice/container/attach_exec.html), 以下的介绍很多是基于这个教程而来的
@@ -30,4 +30,60 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 ## Docker安装
 由于我的环境是Manjaro跟MacOS，所以运行**pacman -S docker**或者**brew cask install docker**就成功安装了，也不需要其他特别的操作。（棒棒！）其他操作系统的安装可以借鉴文首的教程。（总之不会有很多坑就是了！）
 
+## Docker常用命令
+
+### 获取镜像
+
+```
+  docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
+  # 例如：docker pull ubuntu:18.04
+```
+
+### 运行镜像
+
+```
+  docker run -i -t --rm ubuntu:18.04 /bin/bash
+  # -i表示交互式 -t表示终端 --rm表示退出容器即删除容器
+  # -d可以让Docker以守护态的形式运行
+```
+
+### 镜像列表
+
+```
+  docker images
+```
+或者
+```
+  docker image ls
+  # docker system df 可以总体查询镜像以及容器的真实占用空间。
+```
+
+### 镜像删除
+
+```
+  docker image rm <镜像>
+  # 什么镜像名，镜像ID都可以用来删除（很贴心有木有）
+```
+
+### 容器相关基础操作
+```
+  docker container ls
+  # 容器列表
+
+  docker container stop <容器>
+  docker container start <容器>
+  docker container restart <容器>
+  docker container rm <容器>
+
+  docker container prune
+  # 清理所有已经stop的容器
+```
+
+### 进入容器
+如果容器最开始以守护态运行，或者另起了一个shell，这个时候如果我们想要再进入这个容器改怎么操作呢？
+
+```
+  docker -it attach <镜像> /bin/bash
+  # 其中的参数跟**docker run**的时候的参数意义一致
+```
 
