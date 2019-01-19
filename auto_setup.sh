@@ -25,14 +25,20 @@ mkdir flask_proj
     # fi
 # done
 
+echo ----------------------------------------------------------------------------
+echo ---------------------------Init virtualenv----------------------------------
+echo ----------------------------------------------------------------------------
 # download project
 virtualenv flask_proj
 cd flask_proj
 git clone http://github.com/PangPangPangPangPang/webapp.git
 
 
+echo ----------------------------------------------------------------------------
+echo ---------------------------Start nginx--------------------------------------
+echo ----------------------------------------------------------------------------
 # config nginx(ENV_TYPE is defined in Dockerfile)
-if [[ ${ENV_TYPE} -eq release ]]; then                                                                                                                                                     
+if [ "$ENV_TYPE" = "release" ]; then                                                                                                                                                     
     apt-get install -y nginx
     cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
     service nginx restart
@@ -49,6 +55,9 @@ fi
 # done
 
 # update frontend bundle
+echo ----------------------------------------------------------------------------
+echo ---------------------------Clone repo--------------------------------------
+echo ----------------------------------------------------------------------------
 if [ ! -d "$HOME/react-blog" ]; then
     cd $HOME
     git clone http://github.com/PangPangPangPangPang/react-blog.git
@@ -66,10 +75,16 @@ cp -r $HOME/flask_proj/webapp/img/* $HOME/flask_proj/webapp/static/
 cd $HOME/flask_proj/bin
 . ./activate
 
+echo ----------------------------------------------------------------------------
+echo ------------------------Install python requirements-------------------------
+echo ----------------------------------------------------------------------------
 # install requirement
 cd $HOME/flask_proj/webapp
 pip2 install -r requirements.txt
 
+echo ----------------------------------------------------------------------------
+echo ------------------------------Gunicorn start--------------------------------
+echo ----------------------------------------------------------------------------
 # start gunicorn
 pkill gunicorn
 gunicorn --workers=4 --bind=127.0.0.1:8000 index:app

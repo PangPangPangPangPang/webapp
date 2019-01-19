@@ -6,7 +6,6 @@
 一旦给人家的vps环境搞炸了怎么办，
 而且用的还是node+python这种库一升级连自己都跑不起来的技术写的blog。所以这次下定决心用上Docker，最终的结果还是不错的。
 
--------
 [date] 2019-1-14 15:09:36
 [tag] Docker 技术
 
@@ -35,16 +34,17 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 ### 获取镜像
 
 ```
-  docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
   # 例如：docker pull ubuntu:18.04
+  docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
 ```
 
 ### 运行镜像
 
 ```
-  docker run -i -t --rm ubuntu:18.04 /bin/bash
   # -i表示交互式 -t表示终端 --rm表示退出容器即删除容器
   # -d可以让Docker以守护态的形式运行
+  # -p 本地8000端口绑定docker进程80端口
+  docker run -p 8000:80 -i -t --rm ubuntu:18.04 /bin/bash
 ```
 
 ### 镜像列表
@@ -54,8 +54,8 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 ```
 或者
 ```
-  docker image ls
   # docker system df 可以总体查询镜像以及容器的真实占用空间。
+  docker image ls
 ```
 
 ### 镜像删除
@@ -67,23 +67,81 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 
 ### 容器相关基础操作
 ```
-  docker container ls
   # 容器列表
+  docker container ls
 
   docker container stop <容器>
   docker container start <容器>
   docker container restart <容器>
   docker container rm <容器>
 
-  docker container prune
   # 清理所有已经stop的容器
+  docker container prune
 ```
 
 ### 进入容器
 如果容器最开始以守护态运行，或者另起了一个shell，这个时候如果我们想要再进入这个容器改怎么操作呢？
 
 ```
-  docker -it attach <镜像> /bin/bash
+  docker  exec -it <镜像> /bin/bash
   # 其中的参数跟**docker run**的时候的参数意义一致
 ```
+
+## 构建镜像
+构建镜像的方式有几个，但是直推荐用Dockerfile的方式来构建，好处不多说了（如果你是个码农的话）。
+
+### Dockerfile是个什么东东？
+Dockerfile本身只是一个文本文件，里面包含了构建一个镜像的所有指令。（一目了然有木有！）
+
+### Dockerfile指令
+指令还有挺多的，基于我写的简单的Dockerfile来描述一下主要的指令。
+
+```
+
+# 构建镜像的基础，指明我要构建的镜像基于ubuntu
+FROM ubuntu:18.04
+
+# 环境变量配置
+# release or debug
+ENV ENV_TYPE release
+
+# 复制文件到镜像
+COPY . /root/web_app
+
+# 切换工作路径
+WORKDIR /root/web_app
+
+# 注意环境变量是可以支持展开的（但是注意不支持CMD命令！！！！）
+ENV APP_CONFIG_FILE /root/flask_proj/webapp/instance/env_$ENV_TYPE.py
+
+# 执行命令 建议多换行，并且不建议在Dockerfile里面运行apt-get upgrade
+RUN apt-get update  && \
+            apt-get install -y git  && \
+            apt-get install -y python  && \
+            apt-get install -y python-pip  && \
+            apt-get install -y python-virtualenv  && \
+            apt-get install -y nginx  && \
+            apt-get install -y vim 
+
+# 声明暴露出去的端口（如果你觉得你写的代码不够恶心的话，其实可以不暴露这个端口，让镜像的使用者猜就是了。）
+EXPOSE 80
+
+# 容器启动后运行的命令（注意不支持环境变量！！！！）
+CMD ["/bin/bash", "/root/web_app/auto_setup.sh"] 
+
+```
+
+### 其他命令
+
+**VOLUME**:制定的保存目录挂载为卷。如果有数据库的话，不挂载直接存储在容器运行时里的话，容器删除，数据库也就没了，显然是不合理的。
+**ENTRYPOINT**:作用跟**CMD**差不多，但是指定了**ENTRYPOINT**之后就可以把**CMD**转变成参数了。形式为<ENTRYPOINT>“<CMD>”
+
+## 备忘
+总结一下整个部署流程
+1. 将写好的Dockerfile放到你的工程目录的跟目录下并进入
+2. 构建镜像 **docker build .**
+3. 命名镜像 **docker tag user/repo:version**
+4. 上传镜像 **docker push user/repo:version**
+5. 上你的开发机 **docker run -p 8000:80 -i -t user/repo:version**
+
 
