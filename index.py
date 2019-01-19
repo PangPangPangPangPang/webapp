@@ -1,5 +1,5 @@
 from flask import Flask
-from source import AppDelegate, Mongo_db
+from source import AppDelegate, Mongo_db, generate
 from geventwebsocket.handler import WebSocketHandler
 from gevent.pywsgi import WSGIServer
 
@@ -8,6 +8,9 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 root = AppDelegate(app)
+
+generate()
+
 root.register()
 
 # Init Article list

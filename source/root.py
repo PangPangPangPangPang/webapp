@@ -89,4 +89,20 @@ class AppDelegate():
         def static_file(path):
             return self.app.send_static_file(path)
 
+        @self.app.route('/static/js/<path>')
+        @gzipped
+        def jsFile(path):
+            return self.app.send_static_file('static/js/'+path)
+
+        @self.app.route('/static/css/<path>')
+        @gzipped
+        def cssFile(path):
+            return self.app.send_static_file('static/css/'+path)
+
+        @self.app.route('/static/media/<path>')
+        @gzipped
+        def mediaFile(path):
+            return self.app.send_static_file('static/media/'+path)
+
+
 
