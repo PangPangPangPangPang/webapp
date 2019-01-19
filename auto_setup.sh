@@ -1,5 +1,5 @@
 #/bin/bash
-# usage:. ./auto_setup.sh -debug
+# usage:. ./auto_setup.sh 
 
 
 # prepare
@@ -30,15 +30,23 @@ virtualenv flask_proj
 cd flask_proj
 git clone http://github.com/PangPangPangPangPang/webapp.git
 
+
+# config nginx(ENV_TYPE is defined in Dockerfile)
+if [[ ${ENV_TYPE} -eq release ]]; then                                                                                                                                                     
+    apt-get install -y nginx
+    cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
+    service nginx restart
+fi                                                                                                                                                                                         
+
 # config nginx
-for var in $*
-do
-    if [ "$var" = "-release" ]; then
-        apt-get install -y nginx
-        cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
-        service nginx restart
-    fi
-done
+# for var in $*
+# do
+    # if [ "$var" = "-release" ]; then
+        # apt-get install -y nginx
+        # cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
+        # service nginx restart
+    # fi
+# done
 
 # update frontend bundle
 if [ ! -d "$HOME/react-blog" ]; then

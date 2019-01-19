@@ -18,5 +18,5 @@ RUN apt-get update  && \
 
 EXPOSE 80
 
-CMD ["sh", "/root/web_app/auto_setup.sh", "-$ENV_TYPE"] 
+CMD ["/bin/bash", "/root/web_app/auto_setup.sh"] 
 
