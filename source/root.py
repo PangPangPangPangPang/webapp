@@ -4,7 +4,6 @@ import functools
 from cStringIO import StringIO as IO
 from werkzeug.routing import BaseConverter
 from flask import after_this_request, request
-from md import md
 
 
 class RegexConverter(BaseConverter):
@@ -59,7 +58,6 @@ class AppDelegate():
             'app'
             'global_work_path'
             }
-    md();
     def __init__(self, app=None):
         global app_global
         app_global = app
