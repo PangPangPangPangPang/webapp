@@ -1,6 +1,20 @@
 #/bin/bash
 # . ./update_bundle.sh
 
+cd $HOME
+rm -rf flask_temp
+mkdir flask_temp
+
+cd flask_temp
+git clone http://github.com/PangPangPangPangPang/webapp.git
+
+cp -rf $HOME/flask_temp/webapp/resource $HOME/flask_proj/webapp/
+rm -rf $HOME/flask_temp
+echo -----------------------------------------------------
+echo ----------update article success---------------------
+echo -----------------------------------------------------
+
+
 if [ ! -d "$HOME/react-blog" ]; then
     cd $HOME
     git clone http://github.com/PangPangPangPangPang/react-blog.git
@@ -14,6 +28,6 @@ cp -r $HOME/react-blog/build/* $HOME/flask_proj/webapp/static/
 cp -r $HOME/react-blog/index.html $HOME/flask_proj/webapp/static/
 cp -r $HOME/flask_proj/webapp/img/* $HOME/flask_proj/webapp/static/
 
-echo -------------------------------------
-echo ----------update success-------------
-echo -------------------------------------
+echo -----------------------------------------------------
+echo ----------update frontend bundle success-------------
+echo -----------------------------------------------------
