@@ -14,3 +14,6 @@ cp -r $HOME/react-blog/build/* $HOME/flask_proj/webapp/static/
 cp -r $HOME/react-blog/index.html $HOME/flask_proj/webapp/static/
 cp -r $HOME/flask_proj/webapp/img/* $HOME/flask_proj/webapp/static/
 
+echo -------------------------------------
+echo ----------update success-------------
+echo -------------------------------------

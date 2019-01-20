@@ -7,23 +7,23 @@ cd $HOME
 rm -rf flask_proj
 mkdir flask_proj 
 
-# config .bashrc
-# for var in $*
-# do
-    # if [ "$var" = "-debug" ];  then
-        # sed -i -e "/APP_CONFIG_FILE/d" $HOME/.zshrc
-        # echo "export APP_CONFIG_FILE='$HOME/flask_proj/webapp/instance/env_debug.py'" >> $HOME/.zshrc
-        # source $HOME/.zshrc
-    # fi
-    # if [ "$var" = "-release" ];  then
-        # apt-get update
-        # apt-get install -y python-dev python-pip python-virtualenv
+# config .bashrc(without docker)
+for var in $*
+do
+    if [ "$var" = "-debug" ];  then
+        sed -i -e "/APP_CONFIG_FILE/d" $HOME/.zshrc
+        echo "export APP_CONFIG_FILE='$HOME/flask_proj/webapp/instance/env_debug.py'" >> $HOME/.zshrc
+        source $HOME/.zshrc
+    fi
+    if [ "$var" = "-release" ];  then
+        apt-get update
+        apt-get install -y python-dev python-pip python-virtualenv
 
-        # sed -i -e "/APP_CONFIG_FILE/d" $HOME/.bashrc
-        # echo "export APP_CONFIG_FILE='$HOME/flask_proj/webapp/instance/env_release.py'" >> $HOME/.bashrc
-        # source $HOME/.bashrc
-    # fi
-# done
+        sed -i -e "/APP_CONFIG_FILE/d" $HOME/.bashrc
+        echo "export APP_CONFIG_FILE='$HOME/flask_proj/webapp/instance/env_release.py'" >> $HOME/.bashrc
+        source $HOME/.bashrc
+    fi
+done
 
 echo ----------------------------------------------------------------------------
 echo ---------------------------Init virtualenv----------------------------------
@@ -43,16 +43,6 @@ if [ "$ENV_TYPE" = "release" ]; then
     cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
     service nginx restart
 fi                                                                                                                                                                                         
-
-# config nginx
-# for var in $*
-# do
-    # if [ "$var" = "-release" ]; then
-        # apt-get install -y nginx
-        # cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
-        # service nginx restart
-    # fi
-# done
 
 # update frontend bundle
 echo ----------------------------------------------------------------------------
