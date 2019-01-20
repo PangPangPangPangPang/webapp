@@ -4,6 +4,7 @@ import functools
 from cStringIO import StringIO as IO
 from werkzeug.routing import BaseConverter
 from flask import after_this_request, request
+from generate_blog_articles import generate
 
 
 class RegexConverter(BaseConverter):
@@ -67,6 +68,9 @@ class AppDelegate():
         self.app.config.from_pyfile('./instance/config.py')
         self.app.config.from_envvar('APP_CONFIG_FILE')
         self.app.url_map.converters['regex'] = RegexConverter
+
+        # generate article list
+        generate()
 
     def register(self):
         """
