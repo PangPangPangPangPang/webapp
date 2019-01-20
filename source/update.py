@@ -8,7 +8,7 @@ from inter import main
 from generate_blog_articles import generate
 import os
 
-@main.route('/update)
+@main.route('/update')
 def update():
     os.system('../MacroScript/update_bundle.sh')
     generate()
