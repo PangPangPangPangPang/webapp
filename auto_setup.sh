@@ -28,17 +28,18 @@ done
 echo ----------------------------------------------------------------------------
 echo ---------------------------Init virtualenv----------------------------------
 echo ----------------------------------------------------------------------------
+
 # download project
 virtualenv flask_proj
 cd flask_proj
 git clone http://github.com/PangPangPangPangPang/webapp.git
 
 
-echo ----------------------------------------------------------------------------
-echo ---------------------------Start nginx--------------------------------------
-echo ----------------------------------------------------------------------------
 # config nginx(ENV_TYPE is defined in Dockerfile)
 if [ "$ENV_TYPE" = "release" ]; then                                                                                                                                                     
+    echo ----------------------------------------------------------------------------
+    echo ---------------------------Start nginx--------------------------------------
+    echo ----------------------------------------------------------------------------
     apt-get install -y nginx
     cp $HOME/flask_proj/webapp/MacroScript/default /etc/nginx/sites-enabled/
     service nginx restart

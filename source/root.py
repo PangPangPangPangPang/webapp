@@ -69,8 +69,6 @@ class AppDelegate():
         self.app.config.from_envvar('APP_CONFIG_FILE')
         self.app.url_map.converters['regex'] = RegexConverter
 
-        # generate article list
-        generate()
 
     def register(self):
         """
@@ -78,6 +76,9 @@ class AppDelegate():
         """
         from inter import main
         self.app.register_blueprint(main)
+
+        # generate article list
+        generate()
 
         """
         normal route
