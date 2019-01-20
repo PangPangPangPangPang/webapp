@@ -12,4 +12,4 @@ import os
 def update():
     os.system('../MacroScript/update_bundle.sh')
     generate()
-    pass
+    return 'success'
