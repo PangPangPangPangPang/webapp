@@ -4,7 +4,6 @@ import functools
 from cStringIO import StringIO as IO
 from werkzeug.routing import BaseConverter
 from flask import after_this_request, request
-from generate_blog_articles import generate
 
 
 class RegexConverter(BaseConverter):
@@ -76,9 +75,6 @@ class AppDelegate():
         """
         from inter import main
         self.app.register_blueprint(main)
-
-        # generate article list
-        generate()
 
         """
         normal route
