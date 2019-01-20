@@ -9,7 +9,7 @@ from generate_blog_articles import generate
 import os
 
 @main.route('/update')
-def update():
+def updateArticle():
     os.system('../MacroScript/update_bundle.sh')
     generate()
     return 'success'
