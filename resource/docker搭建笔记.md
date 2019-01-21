@@ -33,14 +33,14 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 
 ### 获取镜像
 
-```
+```sh
   # 例如：docker pull ubuntu:18.04
   docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]
 ```
 
 ### 运行镜像
 
-```
+```sh
   # -i表示交互式 -t表示终端 --rm表示退出容器即删除容器
   # -d可以让Docker以守护态的形式运行
   # -p 本地8000端口绑定docker进程80端口
@@ -49,24 +49,24 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 
 ### 镜像列表
 
-```
+```sh
   docker images
 ```
 或者
-```
+```sh
   # docker system df 可以总体查询镜像以及容器的真实占用空间。
   docker image ls
 ```
 
 ### 镜像删除
 
-```
+```sh
   docker image rm <镜像>
   # 什么镜像名，镜像ID都可以用来删除（很贴心有木有）
 ```
 
 ### 容器相关基础操作
-```
+```sh
   # 容器列表
   docker container ls
 
@@ -82,7 +82,7 @@ Container就是一个Image运行起来真正对应到一个进程后的定义。
 ### 进入容器
 如果容器最开始以守护态运行，或者另起了一个shell，这个时候如果我们想要再进入这个容器改怎么操作呢？
 
-```
+```sh
   docker  exec -it <镜像> /bin/bash
   # 其中的参数跟**docker run**的时候的参数意义一致
 ```
@@ -96,7 +96,7 @@ Dockerfile本身只是一个文本文件，里面包含了构建一个镜像的�
 ### Dockerfile指令
 指令还有挺多的，基于我写的简单的Dockerfile来描述一下主要的指令。
 
-```
+```sh
 
 # 构建镜像的基础，指明我要构建的镜像基于ubuntu
 FROM ubuntu:18.04
