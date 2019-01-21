@@ -35,7 +35,7 @@ rootContentView在bundle加载结束后初始化，初始化过程中uiManager�
 在注册rootView之后在uiManager会维护一套shadowViewTree用来跟真正的viewTree做映射，这些shadowView负责用来布局的计算。其实更深层的是内部维护了一套CSSNodeTree来根shadowViewTree做一一对应。接下来会更详细的介绍。
 >从以上的过程，串联了一条如下的关系：
 
-![image](http://www.mmmmmax.wang/uimanager.png)
+![image](http://mmmmmax.cn/uimanager.png)
 
 到这里，初始化中有关uiManager基本结束。接下来是渲染的重头戏。
 ### 渲染
