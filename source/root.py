@@ -4,7 +4,6 @@ import functools
 from cStringIO import StringIO as IO
 from werkzeug.routing import BaseConverter
 from flask import after_this_request, request
-from md import md
 
 
 class RegexConverter(BaseConverter):
@@ -59,7 +58,6 @@ class AppDelegate():
             'app'
             'global_work_path'
             }
-    md();
     def __init__(self, app=None):
         global app_global
         app_global = app
@@ -69,6 +67,7 @@ class AppDelegate():
         self.app.config.from_pyfile('./instance/config.py')
         self.app.config.from_envvar('APP_CONFIG_FILE')
         self.app.url_map.converters['regex'] = RegexConverter
+
 
     def register(self):
         """
@@ -90,5 +89,21 @@ class AppDelegate():
         @gzipped
         def static_file(path):
             return self.app.send_static_file(path)
+
+        @self.app.route('/static/js/<path>')
+        @gzipped
+        def jsFile(path):
+            return self.app.send_static_file('static/js/'+path)
+
+        @self.app.route('/static/css/<path>')
+        @gzipped
+        def cssFile(path):
+            return self.app.send_static_file('static/css/'+path)
+
+        @self.app.route('/static/media/<path>')
+        @gzipped
+        def mediaFile(path):
+            return self.app.send_static_file('static/media/'+path)
+
 
 

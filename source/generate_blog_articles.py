@@ -65,6 +65,7 @@ def generate():
     arthicles = sorted(arthicles, key=sortByDate, reverse=True)
     ret = json.dumps(arthicles, indent=1)
 
+    os.chdir(articles_path)
     json_file = open('./list.json', 'w')
     json_file.writelines(ret)
     json_file.close()
