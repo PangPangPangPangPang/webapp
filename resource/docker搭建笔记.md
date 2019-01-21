@@ -134,6 +134,7 @@ CMD ["/bin/bash", "/root/web_app/auto_setup.sh"]
 ### 其他命令
 
 **VOLUME**:制定的保存目录挂载为卷。如果有数据库的话，不挂载直接存储在容器运行时里的话，容器删除，数据库也就没了，显然是不合理的。
+
 **ENTRYPOINT**:作用跟**CMD**差不多，但是指定了**ENTRYPOINT**之后就可以把**CMD**转变成参数了。形式为<ENTRYPOINT>“<CMD>”
 
 ## 备忘
