@@ -15,17 +15,16 @@ echo ----------update article success---------------------
 echo -----------------------------------------------------
 
 
-if [ ! -d "$HOME/react-blog" ]; then
+if [ ! -d "$HOME/blog_frontend" ]; then
     cd $HOME
-    git clone http://github.com/PangPangPangPangPang/react-blog.git
+    git clone http://github.com/PangPangPangPangPang/blog_frontend.git
 else
-    cd $HOME/react-blog
+    cd $HOME/blog_frontend
     git pull
 fi
 
 rm $HOME/flask_proj/webapp/static/*
-cp -r $HOME/react-blog/build/* $HOME/flask_proj/webapp/static/
-cp -r $HOME/react-blog/manual_build/* $HOME/flask_proj/webapp/static/
+cp -r $HOME/blog_frontend/build/* $HOME/flask_proj/webapp/static/
 cp -r $HOME/flask_proj/webapp/img/* $HOME/flask_proj/webapp/static/
 
 echo -----------------------------------------------------
